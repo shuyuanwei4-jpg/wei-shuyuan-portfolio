@@ -14,7 +14,7 @@ jobs:
           curl --retry 3 --fail --silent --show-error "$SITE_URL/" -o /tmp/portfolio.html
           grep -q 'AI 互动产品与体验设计' /tmp/portfolio.html
           grep -q '媒介是人的延申。' /tmp/portfolio.html
-          grep -q 'refinement.js?v=20261105-12' /tmp/portfolio.html
+          grep -q 'refinement.js?v=20261105-13' /tmp/portfolio.html
           grep -q 'refinement.css?v=20261105-12' /tmp/portfolio.html
           grep -q 'AIGC Work' /tmp/portfolio.html
           grep -q 'data-filter="aigc"' /tmp/portfolio.html
@@ -24,6 +24,8 @@ jobs:
           grep -Fq "'assets/cat-talk-poster-desktop.jpg','landscape',true" /tmp/portfolio.js
           for project in integrity-film nuo-dance tumate; do grep -q "id:'$project'" /tmp/portfolio.js; done
           grep -q '数字非遗·中国好创意省级三等奖' /tmp/portfolio.js
+          grep -q 'AI动画短片 · 中国好创意国家三等奖' /tmp/portfolio.js
+          grep -q '智能座舱 · HMI 概念设计宣传片' /tmp/portfolio.js
           grep -q "award:'中国好创意省级三等奖'" /tmp/portfolio.js
           grep -q 'has-hover-cover' /tmp/portfolio.js
           if grep -q 'hackathon-heading' /tmp/portfolio.html; then exit 1; fi
