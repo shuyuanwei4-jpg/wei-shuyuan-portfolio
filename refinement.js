@@ -15,17 +15,17 @@ const projects=[
  {id:'wow-balloon',category:'practice',title:'哇！气球',description:'一件由我与八岁妹妹共同创作的声控交互装置游戏。从“想在家大喊，却被告知不礼貌”的生活片段出发，将声音转化为气球的膨胀、色彩与飞行，让情绪在安全的游戏空间里得到表达。',cardDescription:'与八岁妹妹共同创作，用声音推动气球飞向太空，探索情绪表达与自我接纳。',cover:'assets/wow-balloon-poster.jpg',coverAlt:'哇！气球作品展板：儿童使用 Arduino 声控装置与气球游戏的现场',coverBackground:'#ffbd2d',role:'共同创作 · 交互设计 · 软硬件实现',date:'声控交互装置 · 儿童情绪表达',color:'#edb5d1',ink:'#111',media:[['video','哇！气球 · 声控交互演示','assets/wow-balloon-demo.mp4',null,'assets/wow-balloon-demo-poster.jpg','landscape',true],['image','哇！气球 · 作品展板','assets/wow-balloon-poster.jpg',null,null,'poster']]}
 ];
 projects.push(
- {id:'integrity-film',category:'aigc',title:'廉洁精神照古今',description:'以中华廉洁文化传承为主题的 AIGC 数字动画。将“鱼、钱、袖”三组传统意象转化为贯穿古今的视觉线索，以故事叙事与物象隐喻呈现传统美德的时代价值。',cardDescription:'以“鱼、钱、袖”串联古今人物故事，用中文提示词与 AIGC 制作链路，将廉洁文化转译为数字影像。',role:'文化叙事 · AIGC 数字动画',date:'2025.12 · 中国好创意国家三等奖',award:'中国好创意 · 全国总决赛国家三等奖',color:'#fff',ink:'#111',media:[['video','廉洁精神照古今 · 动画正片']],caseSections:[
+ {id:'integrity-film',category:'aigc',title:'廉洁精神照古今',description:'以中华廉洁文化传承为主题的 AIGC 数字动画。将“鱼、钱、袖”三组传统意象转化为贯穿古今的视觉线索，以故事叙事与物象隐喻呈现传统美德的时代价值。',cardDescription:'以“鱼、钱、袖”串联古今人物故事，用中文提示词与 AIGC 制作链路，将廉洁文化转译为数字影像。',role:'文化叙事 · AIGC 数字动画',date:'2025.12 · 中国好创意国家三等奖',award:'中国好创意 · 全国总决赛国家三等奖',color:'#fff',ink:'#111',media:[['video','廉洁精神照古今 · 动画正片','assets/integrity-film.mp4',null,'assets/integrity-film-poster.jpg','landscape',true]],caseSections:[
   {title:'创作主题',text:'以数字艺术参与中华传统美德的当代表达。作品融合传统文化意象与 AIGC 视听语言，通过跨时代的人物故事，让廉洁文化从抽象价值转化为可感知的情节与画面。'},
   {title:'三组叙事意象',points:['以“鱼”喻公权无私：串联羊续悬鱼与焦裕禄退鱼，在不同历史场景中呈现对权力边界的坚守。','以“钱”喻为民初心：连接刘宠取一钱与张桂梅捐资助学，以物象转化呈现心系他人与公共利益的价值选择。','以“袖”喻清风正气：借于谦两袖清风的典故，将人格境界转化为可视的艺术意象。']},
   {title:'AIGC 制作链路',points:['静态分镜：使用豆包 Seedream 3.0 生成画面，组织传统意象与人物场景。','动态影像：使用即梦 Seedance 1.0 Pro 将静态分镜转化为视频。','声音制作：使用 Mubert AI 生成配乐，结合豆包智能体生成配音。','提示词表达：全程以中文提示词组织创意与生成需求，深入使用国产 AI 模型，将叙事、画面和声音整合为完整作品。']}
  ]},
- {id:'nuo-dance',category:'aigc',title:'通天傩舞：解码赣傩舞谱中的传统天文观',cardTitle:'通天傩舞',description:'围绕非遗“江西傩舞”展开的数字生态图谱与 AIGC 影像创作。从舞谱数据、面具符号和舞步点位中梳理传统哲学线索，以动态可视化揭示傩舞与中华传统宇宙观之间的关联。',cardDescription:'将赣傩舞谱、面具符号与舞步点位转译为动态文化图谱，以 AIGC 影像解读非遗中的传统宇宙观。',role:'非遗研究 · 数据可视化 · AIGC 影像',date:'非遗可视化 · AIGC 影像',color:'#3155f5',ink:'#fff',media:[['video','通天傩舞 · AIGC 影像']],caseSections:[
+ {id:'nuo-dance',category:'aigc',title:'通天傩舞：解码赣傩舞谱中的传统天文观',cardTitle:'通天傩舞',description:'围绕非遗“江西傩舞”展开的数字生态图谱与 AIGC 影像创作。从舞谱数据、面具符号和舞步点位中梳理传统哲学线索，以动态可视化揭示傩舞与中华传统宇宙观之间的关联。',cardDescription:'将赣傩舞谱、面具符号与舞步点位转译为动态文化图谱，以 AIGC 影像解读非遗中的传统宇宙观。',role:'非遗研究 · 数据可视化 · AIGC 影像',date:'非遗可视化 · AIGC 影像',color:'#3155f5',ink:'#fff',media:[['video','通天傩舞 · AIGC 影像','assets/nuo-dance.mp4',null,'assets/nuo-dance-poster.jpg','landscape',true]],caseSections:[
   {title:'研究与信息梳理',text:'以江西傩舞为研究对象，对赣傩舞谱进行量化数据收集与信息整理，提取傩面具、剧目特征和舞步点位之间的联系，建立数字生态图谱的内容基础。'},
   {title:'从符号到图谱',points:['文化解构：将具象的面具符号、剧目与舞步，关联到“阴阳两仪、五行五色、五方四象”等抽象文化结构。','数字重构：借助 AI 编程与程序语言转化，将分散的民俗记录组织为系统化、网络化、可视化的数字模型。','视听呈现：结合静态图谱与动态影像，以 AIGC 视听语言解释数据、符号与文化观念之间的关系。']},
   {title:'传统宇宙观的可视表达',text:'作品通过图谱与影像呈现傩舞班行进轨迹与《河图洛书》之间的隐性关联，探索人、神灵和自然宇宙的隐喻系统，为公众理解传统宇宙观提供新的视觉入口。'}
  ]},
- {id:'tumate',category:'aigc',title:'TuMate 途搭子 · 智能座舱 HMI 概念设计',cardTitle:'TuMate 途搭子',description:'面向多车结伴出游的情感化 AI 智能座舱概念设计。以“社交润滑剂”为产品角色，将长途旅程转化为共同参与的互动体验，并通过高光对话与视频集锦沉淀旅途记忆。',cardDescription:'面向多车结伴出游，设计担任“社交润滑剂”的 AI 座舱，以互动话题与旅途高光集锦连接同行者。',role:'出行场景研究 · HMI 概念设计 · 演示影像',date:'智能座舱 · HMI 概念设计',color:'#b9f227',ink:'#111',media:[['video','TuMate 途搭子 · HMI 概念设计演示']],caseSections:[
+ {id:'tumate',category:'aigc',title:'TuMate 途搭子 · 智能座舱 HMI 概念设计',cardTitle:'TuMate 途搭子',description:'面向多车结伴出游的情感化 AI 智能座舱概念设计。以“社交润滑剂”为产品角色，将长途旅程转化为共同参与的互动体验，并通过高光对话与视频集锦沉淀旅途记忆。',cardDescription:'面向多车结伴出游，设计担任“社交润滑剂”的 AI 座舱，以互动话题与旅途高光集锦连接同行者。',role:'出行场景研究 · HMI 概念设计 · 演示影像',date:'智能座舱 · HMI 概念设计',color:'#b9f227',ink:'#111',media:[['video','TuMate 途搭子 · HMI 概念设计演示','assets/tumate.mp4',null,'assets/tumate-poster.jpg','landscape',true]],caseSections:[
   {title:'场景与机会',text:'当智能座舱从功能体验走向情感连接，多车结伴出游仍存在沟通割裂的问题：车与车之间高度依赖手机联系，长途驾驶的单调与社交疲劳削弱了同行者的共同参与感。设计聚焦年轻群体自驾游中的多人社交与情绪需求。'},
   {title:'核心体验设计',points:['AI 社交润滑剂：围绕结伴旅行组织专属语料与互动话题，将长途旅程构想为一场共同参与的“移动综艺”。','名场面捕捉：设计高光对话识别与剪辑机制，将旅途中的有趣片段生成短视频集锦。','共同记忆与 UGC：将即时互动沉淀为可回看、可分享的旅途内容，连接座舱体验与用户创作。']},
   {title:'概念价值与呈现',text:'通过 HMI 概念设计演示视频呈现交互场景与体验逻辑，探索 AI 如何参与多人出行、调节社交氛围，并为新能源汽车带来围绕情绪价值与共同记忆的体验方向。'}
@@ -39,7 +39,8 @@ projects.slice(3).forEach(p=>{
  card.innerHTML='<div><span class="eyebrow"></span><h3></h3><p></p></div><div class="card-foot"><span class="tag"></span><i data-lucide="arrow-up-right" aria-hidden="true"></i></div>';
  if(p.category==='aigc'){
   card.classList.add('aigc-card');card.firstElementChild.classList.add('aigc-summary');
-  const preview=document.createElement('div');preview.className='aigc-preview';preview.setAttribute('aria-hidden','true');preview.innerHTML='<i data-lucide="clapperboard"></i><span>视频待补充</span>';card.prepend(preview);
+  const preview=document.createElement('div');preview.className='aigc-preview';preview.setAttribute('aria-hidden','true');
+  preview.innerHTML=`<img src="${p.media[0][4]}" alt="" loading="lazy" decoding="async"><span class="aigc-preview-play"><i data-lucide="play"></i></span>`;card.prepend(preview);
  }
  track.append(card);
 });
