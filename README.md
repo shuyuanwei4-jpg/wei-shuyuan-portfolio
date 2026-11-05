@@ -10,6 +10,7 @@
 - `refinement.js`：项目资料、卡片、轮播、详情展开及视频交互。
 - `refinement.css`：字体、布局、悬停效果及手机适配。
 - `film-frame.css`：仅负责「交互与叙事」轮播的电影胶片外框。
+- `afk-growth.css`：仅负责 AFK 卡片向右上递进、悬停展开的外框。
 - `assets/`：本地字体、图片、视频、MVP 文档与图标库。
 - `.nojekyll`：GitHub Pages 静态文件发布配置。
 
@@ -34,5 +35,11 @@ GitHub Pages 会自动更新，通常需要几分钟。保持 `assets` 的相对
 本次修改前的完整版本已保存为本地 Git 标签 `before-film-frame-20261105`，便于后续对比和回退。
 
 「视觉与影像」现在是两张静态卡片；电脑并列，手机上下排列。悬停时有轻微摇摆、错位投影与箭头转动。
+
+## 撤销贴边胶片与 AFK 增长外框
+
+本次调整前的版本保存在本地 Git 标签 `before-tight-film-growth-20261105`，同时已打包到 `D:/WeiShuyuan-Portfolio-before-growth-20261105.zip`。胶片去除上下白边，卡片在悬停时保持贴边；AFK 的两层外框在悬停或键盘聚焦时向右上展开。
+
+移除 `index.html` 中 `afk-growth.css` 的引用，可以单独恢复 AFK 原外框。胶片可通过对照上述版本的 `film-frame.css` 单独恢复上下留白。
 
 更新日期：2026-11-05。

@@ -13,8 +13,9 @@ jobs:
         run: |
           curl --retry 3 --fail --silent --show-error "$SITE_URL/" -o /tmp/portfolio.html
           grep -q 'AI 互动产品与体验设计' /tmp/portfolio.html
-          grep -q 'film-frame.css?v=20261105-2' /tmp/portfolio.html
-          for asset in refinement.css refinement.js film-frame.css assets/wow-balloon-demo.mp4 assets/silent-venting-demo.mp4 assets/kinx-demo.mp4 assets/hellycat-mobile-demo.mp4 assets/cat-talk-demo.mp4 assets/silent-venting-cover.jpg assets/wow-balloon-poster.jpg; do
+          grep -q 'film-frame.css?v=20261105-3' /tmp/portfolio.html
+          grep -q 'afk-growth.css?v=20261105-3' /tmp/portfolio.html
+          for asset in refinement.css refinement.js film-frame.css afk-growth.css assets/wow-balloon-demo.mp4 assets/silent-venting-demo.mp4 assets/kinx-demo.mp4 assets/hellycat-mobile-demo.mp4 assets/cat-talk-demo.mp4 assets/silent-venting-cover.jpg assets/wow-balloon-poster.jpg; do
             status=$(curl --retry 3 --silent --show-error --range 0-1023 --output /dev/null --write-out '%{http_code}' "$SITE_URL/$asset")
             echo "$asset: $status"
             case "$status" in 200|206) ;; *) exit 1 ;; esac
