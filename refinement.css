@@ -16,7 +16,7 @@ html{scrollbar-gutter:stable}body.project-open{overflow:hidden}
 .featured:has(:focus-visible) .preview-stage{opacity:1}.featured:has(:focus-visible) .preview-wordmark{opacity:0}
 .preview-caption{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;padding:12px 20px;border-top:2px solid var(--ink);background:var(--paper);font-size:var(--text-small);line-height:1.8}.preview-caption>span{display:inline-flex;align-items:center;gap:8px}.preview-caption svg{width:20px;height:20px;transition:transform .3s}.project-preview:hover .preview-caption svg{transform:translate(3px,-3px)}
 .project-detail-trigger{padding:8px 0;border:0;border-bottom:2px solid currentColor;background:none;color:inherit;cursor:pointer}.project-detail-trigger svg{width:22px;height:22px;transition:transform .3s}.project-detail-trigger:hover svg{transform:translate(4px,-4px)}
-.featured-body{position:relative}.featured-body>.project-detail-trigger::after{content:"";position:absolute;inset:0;cursor:pointer}
+.featured-body{position:relative}.featured-body>.project-detail-trigger::after{content:"";position:absolute;inset:0;cursor:inherit}
 .featured-body:has(>.project-detail-trigger:focus-visible){outline:3px solid var(--blue);outline-offset:-6px}.featured-body>.project-detail-trigger:focus-visible{outline:0}
 .play-project{display:inline-flex;align-items:center;gap:18px;margin-top:28px;padding:10px 0;border-bottom:2px solid currentColor;font-size:var(--text-body);font-weight:700}.play-project svg{width:24px;height:24px;transition:transform .3s}.play-project:hover svg{transform:translate(4px,-4px)}
 .detail-actions{display:flex;flex-wrap:wrap;gap:0 32px}

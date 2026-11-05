@@ -13,7 +13,7 @@ jobs:
         run: |
           curl --retry 3 --fail --silent --show-error "$SITE_URL/" -o /tmp/portfolio.html
           grep -q 'AI 互动产品与体验设计' /tmp/portfolio.html
-          grep -q 'refinement.css?v=20261105-4' /tmp/portfolio.html
+          grep -q 'refinement.css?v=20261105-5' /tmp/portfolio.html
           grep -q 'film-frame.css?v=20261105-3' /tmp/portfolio.html
           grep -q 'afk-growth.css?v=20261105-3' /tmp/portfolio.html
           for asset in refinement.css refinement.js film-frame.css afk-growth.css assets/wow-balloon-demo.mp4 assets/silent-venting-demo.mp4 assets/kinx-demo.mp4 assets/hellycat-mobile-demo.mp4 assets/cat-talk-demo.mp4 assets/silent-venting-cover.jpg assets/wow-balloon-poster.jpg; do
