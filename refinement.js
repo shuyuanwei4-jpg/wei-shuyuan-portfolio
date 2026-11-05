@@ -231,17 +231,19 @@ listen(track,'keydown',e=>{
  if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();scrollCarousel(e.key==='ArrowRight'?1:-1);}
  if(e.key==='Home'||e.key==='End'){e.preventDefault();track.scrollTo({left:e.key==='Home'?0:track.scrollWidth,behavior:reducedMotion.matches?'instant':'smooth'});}
 });
-// Move a card to the end only after it has completely left the viewport.
+// Recycle cards at either edge while preserving their visible positions.
 let autoFrame=0,lastAutoTime=0,autoPosition=0,loopStep=0;
 const autoPixelsPerSecond=detailView?120:72;
+const autoDirection=carousel.dataset.autoplayDirection==='right'?-1:1;
 let inView=false,hoverPaused=false,keyboardPaused=false,touchPaused=false,manualPaused=false,touchTimer=0;
 function measureLoop(){const first=track.firstElementChild;return first?first.getBoundingClientRect().width+parseFloat(getComputedStyle(track).columnGap):0;}
 function canAutoplay(){return !destroyed&&inView&&!hoverPaused&&!keyboardPaused&&!touchPaused&&!manualPaused&&!document.hidden&&!reducedMotion.matches&&(detailView?detail.open&&detail.dataset.state!=='closing':!detail.open&&!section?.hidden)&&track.scrollWidth>track.clientWidth+1;}
 function animateCarousel(time){
  autoFrame=0;if(!canAutoplay()){syncAutoplay();return;}
  if(lastAutoTime){
-  autoPosition+=Math.min(time-lastAutoTime,64)*autoPixelsPerSecond/1000;
+  autoPosition+=Math.min(time-lastAutoTime,64)*autoPixelsPerSecond*autoDirection/1000;
   while(loopStep>0&&autoPosition>=loopStep){track.append(track.firstElementChild);autoPosition-=loopStep;}
+  while(loopStep>0&&autoPosition<0){track.prepend(track.lastElementChild);autoPosition+=loopStep;}
   track.scrollLeft=autoPosition;
  }
  lastAutoTime=time;autoFrame=requestAnimationFrame(animateCarousel);

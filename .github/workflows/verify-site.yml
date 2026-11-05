@@ -14,11 +14,12 @@ jobs:
           curl --retry 3 --fail --silent --show-error "$SITE_URL/" -o /tmp/portfolio.html
           grep -q 'AI 互动产品与体验设计' /tmp/portfolio.html
           grep -q '媒介是人的延申。' /tmp/portfolio.html
-          grep -q 'refinement.js?v=20261105-13' /tmp/portfolio.html
+          grep -q 'refinement.js?v=20261105-14' /tmp/portfolio.html
           grep -q 'refinement.css?v=20261105-12' /tmp/portfolio.html
           grep -q 'AIGC Work' /tmp/portfolio.html
           grep -q 'data-filter="aigc"' /tmp/portfolio.html
           grep -q 'id="aigc-carousel"' /tmp/portfolio.html
+          grep -q 'id="aigc-carousel" data-autoplay-direction="right"' /tmp/portfolio.html
           curl --retry 3 --fail --silent --show-error "$SITE_URL/refinement.js" -o /tmp/portfolio.js
           grep -Fq 'autoPixelsPerSecond=detailView?120:72' /tmp/portfolio.js
           grep -Fq "'assets/cat-talk-poster-desktop.jpg','landscape',true" /tmp/portfolio.js
