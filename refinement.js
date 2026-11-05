@@ -64,6 +64,7 @@ const detail=document.querySelector('#detail');
 const surface=detail.querySelector('.project-surface');
 const detailContent=detail.querySelector('.detail-content');
 let sourceCard=null,sourceFocus=null,surfaceAnimation=null,contentAnimation=null;
+let detailCarousels=[];
 function placeholder([type,label]){
  return `<figure class="media-placeholder ${type==='video'?'video-placeholder':'image-placeholder'}"><i data-lucide="${type==='video'?'clapperboard':'image'}" aria-hidden="true"></i><figcaption><strong>${label}</strong><span>${type==='video'?'视频':'图片'}待补充</span></figcaption></figure>`;
 }
@@ -79,6 +80,7 @@ function projectMedia(media){
  return `<figure class="project-media screenshot-media">${href?`<a href="${href}" target="_blank" rel="noopener noreferrer" aria-label="${label}，在线游玩（新窗口打开）">${img}</a>`:img}<figcaption>${label}${href?' / <a href="'+href+'" target="_blank" rel="noopener noreferrer">meowcat.fun <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>':''}</figcaption></figure>`;
 }
 function renderDetail(p){
+ detailCarousels.forEach(carousel=>carousel.destroy());detailCarousels=[];
  const headings=p.category==='ai'?['用户与问题','关键决策与交互','验证与复盘']:['创作与背景','设计与制作过程','结果与反思'];
  const body=document.querySelector('#detail-body');
  const playLink=p.url?`<a class="play-project" href="${p.url}" target="_blank" rel="noopener noreferrer">在线游玩 <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>`:'';
@@ -88,7 +90,7 @@ function renderDetail(p){
  else if(p.id==='cat-talk')story=document.querySelector('#cat-talk-case').innerHTML;
  else if(p.id==='silent-release')story=document.querySelector('#silent-venting-case').innerHTML;
  else if(p.id==='wow-balloon')story=`<section class="case-section poster-section"><h3>作品展板</h3>${projectMedia(p.media[1])}</section>`+document.querySelector('#wow-balloon-case').innerHTML;
- else if(p.slides)story=document.querySelector('#kinx-mvp-case').innerHTML+`<section class="kinx-poster-section" aria-label="KIN//X 项目海报">${projectMedia(['image','KIN//X 项目易拉宝海报','assets/kinx-rollup-poster.webp',null,null,'poster'])}</section><section class="case-section poster-section" aria-labelledby="kinx-process-title"><h3 id="kinx-process-title">创作过程</h3><div class="project-slides" aria-label="KIN//X 项目介绍">${p.slides.map(([file,label])=>`<figure class="project-slide"><a href="assets/kinx-${file}.jpg" target="_blank" rel="noopener noreferrer" aria-label="查看${label}原图（新窗口打开）"><img src="assets/kinx-${file}.jpg" alt="${label}" width="2425" height="1364" loading="lazy" decoding="async"></a></figure>`).join('')}</div></section>`;
+ else if(p.slides)story=document.querySelector('#kinx-mvp-case').innerHTML+`<section class="case-section poster-section" aria-labelledby="kinx-process-title"><h3 id="kinx-process-title">创作过程</h3><div class="project-slides" aria-label="KIN//X 项目介绍">${p.slides.map(([file,label])=>`<figure class="project-slide"><a href="assets/kinx-${file}.jpg" target="_blank" rel="noopener noreferrer" aria-label="查看${label}原图（新窗口打开）"><img src="assets/kinx-${file}.jpg" alt="${label}" width="2425" height="1364" loading="lazy" decoding="async"></a></figure>`).join('')}</div></section>`;
  else story=`<section class="case-section"><h3>${headings[0]}</h3><p class="copy-placeholder">内容待补充</p></section><div class="media-gallery">${p.media.slice(1).map(projectMedia).join('')}</div><section class="case-section"><h3>${headings[1]}</h3><p class="copy-placeholder">内容待补充</p></section><section class="case-section"><h3>${headings[2]}</h3><p class="copy-placeholder">内容待补充</p></section>`;
  const award=p.award?`<dt>获奖情况</dt><dd>${p.award}</dd>`:'';
  body.innerHTML=`<section class="detail-intro detail-inner"><div><span class="eyebrow">${p.date}</span><h2 id="detail-title">${p.title}</h2><p>${p.description}</p><div class="detail-actions">${playLink}${downloadLink}</div></div><dl class="detail-meta"><dt>${p.category==='ai'||p.id==='afk'?'我的职责':'创作方向'}</dt><dd>${p.role}</dd>${award}<dt>${p.id==='hellycat'?'运行平台':'项目素材'}</dt><dd>${p.id==='hellycat'?'电脑浏览器 / 安卓手机':p.media.some(m=>m[0]==='video')?'视频 / 图片 / 过程记录':'界面图片 / 过程记录'}</dd></dl></section><div class="detail-canvas"><div class="detail-inner">${projectMedia(p.media[0])}${story}</div></div>`;
@@ -107,6 +109,7 @@ function renderDetail(p){
  }
  detail.style.setProperty('--project-bg',p.color);detail.style.setProperty('--project-ink',p.ink);
  lucide.createIcons({root:body});
+ detailCarousels=[...body.querySelectorAll('.carousel')].map(carousel=>setupCarousel(carousel,{detailView:true}));
 }
 function cardTransform(card){
  const rect=card.getBoundingClientRect();
@@ -143,13 +146,16 @@ detail.querySelector('.close').addEventListener('click',closeProject);
 detail.querySelector('.return-projects').addEventListener('click',closeProject);
 detail.addEventListener('cancel',e=>{e.preventDefault();closeProject();});
 detail.addEventListener('close',()=>{
+ detailCarousels.forEach(carousel=>carousel.destroy());detailCarousels=[];
  detail.querySelectorAll('video').forEach(video=>video.pause());
  surfaceAnimation?.cancel();contentAnimation?.cancel();detail.dataset.state='closed';
  document.body.classList.remove('project-open');
  const target=sourceFocus?.isConnected?sourceFocus:sourceCard;target?.focus({preventScroll:true});
 });
 
-function setupCarousel(carousel){
+function setupCarousel(carousel,{detailView=false}={}){
+const controller=new AbortController();let destroyed=false;
+const listen=(target,event,callback,options={})=>target.addEventListener(event,callback,{...options,signal:controller.signal});
 const track=carousel.querySelector('.carousel-track');
 const initialCards=[...track.children];
 const prev=carousel.querySelector('[data-carousel-action="prev"]'),next=carousel.querySelector('[data-carousel-action="next"]');
@@ -157,9 +163,10 @@ const playback=carousel.querySelector('[data-carousel-action="playback"]');
 // A second cycle keeps compact cards moving continuously when only two projects exist.
 const copies=initialCards.map(card=>{
  const copy=card.cloneNode(true);const p=projects.find(project=>project.id===card.dataset.project);
- copy.removeAttribute('data-project');copy.dataset.carouselCopy=p.id;copy.tabIndex=-1;
+ copy.removeAttribute('data-project');copy.dataset.carouselCopy=p?.id||'photo';copy.tabIndex=-1;
  copy.setAttribute('aria-hidden','true');copy.removeAttribute('role');copy.removeAttribute('aria-label');copy.removeAttribute('aria-haspopup');
- copy.addEventListener('click',e=>{e.preventDefault();openProject(copy,p);});
+ copy.querySelectorAll('a,button').forEach(element=>element.tabIndex=-1);
+ if(p)listen(copy,'click',e=>{e.preventDefault();openProject(copy,p);});
  track.append(copy);return copy;
 });
 const loopCards=[...initialCards,...copies];
@@ -167,20 +174,20 @@ let carouselFrame=0;
 function carouselStops(){
  const viewport=track.getBoundingClientRect();const inset=parseFloat(getComputedStyle(track).paddingLeft);
  const max=Math.max(0,track.scrollWidth-track.clientWidth);
- return [...new Set([...track.querySelectorAll('article:not([hidden])')].map(card=>Math.max(0,Math.min(max,Math.round(card.getBoundingClientRect().left-viewport.left+track.scrollLeft-inset)))).concat(max))];
+ return [...new Set([...track.children].filter(card=>!card.hidden).map(card=>Math.max(0,Math.min(max,Math.round(card.getBoundingClientRect().left-viewport.left+track.scrollLeft-inset)))).concat(max))];
 }
 function updateCarousel(){
- carouselFrame=0;if(document.querySelector('#signals').hidden)return;
+ carouselFrame=0;if(destroyed||(!detailView&&document.querySelector('#signals').hidden))return;
  const max=Math.max(0,track.scrollWidth-track.clientWidth);prev.disabled=track.scrollLeft<=3;next.disabled=track.scrollLeft>=max-3;
 }
-function queueCarousel(){if(!carouselFrame)carouselFrame=requestAnimationFrame(updateCarousel);}
+function queueCarousel(){if(!destroyed&&!carouselFrame)carouselFrame=requestAnimationFrame(updateCarousel);}
 function scrollCarousel(direction){
  const stops=carouselStops();const destination=direction>0?stops.find(stop=>stop>track.scrollLeft+8):stops.slice().reverse().find(stop=>stop<track.scrollLeft-8);
  if(destination!==undefined)track.scrollTo({left:destination,behavior:reducedMotion.matches?'instant':'smooth'});
 }
-prev.addEventListener('click',()=>scrollCarousel(-1));next.addEventListener('click',()=>scrollCarousel(1));
-track.addEventListener('scroll',queueCarousel,{passive:true});
-track.addEventListener('keydown',e=>{
+listen(prev,'click',()=>scrollCarousel(-1));listen(next,'click',()=>scrollCarousel(1));
+listen(track,'scroll',queueCarousel,{passive:true});
+listen(track,'keydown',e=>{
  if(e.altKey||e.ctrlKey||e.metaKey)return;
  keyboardPaused=true;syncAutoplay();
  if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();scrollCarousel(e.key==='ArrowRight'?1:-1);}
@@ -190,7 +197,7 @@ track.addEventListener('keydown',e=>{
 let autoFrame=0,lastAutoTime=0,autoPosition=0,loopStep=0;
 let inView=false,hoverPaused=false,keyboardPaused=false,touchPaused=false,manualPaused=false,touchTimer=0;
 function measureLoop(){const first=track.firstElementChild;return first?first.getBoundingClientRect().width+parseFloat(getComputedStyle(track).columnGap):0;}
-function canAutoplay(){return inView&&!hoverPaused&&!keyboardPaused&&!touchPaused&&!manualPaused&&!detail.open&&!document.hidden&&!reducedMotion.matches&&!document.querySelector('#signals').hidden&&track.scrollWidth>track.clientWidth+1;}
+function canAutoplay(){return !destroyed&&inView&&!hoverPaused&&!keyboardPaused&&!touchPaused&&!manualPaused&&!document.hidden&&!reducedMotion.matches&&(detailView?detail.open&&detail.dataset.state!=='closing':!detail.open&&!document.querySelector('#signals').hidden)&&track.scrollWidth>track.clientWidth+1;}
 function animateCarousel(time){
  autoFrame=0;if(!canAutoplay()){syncAutoplay();return;}
  if(lastAutoTime){
@@ -205,26 +212,29 @@ function syncAutoplay(){
  if(running&&!autoFrame){autoPosition=track.scrollLeft;loopStep=measureLoop();lastAutoTime=0;autoFrame=requestAnimationFrame(animateCarousel);}
  if(!running&&autoFrame){cancelAnimationFrame(autoFrame);autoFrame=0;lastAutoTime=0;}
 }
-carousel.addEventListener('pointerenter',e=>{if(e.pointerType!=='touch'){hoverPaused=true;syncAutoplay();}});
-carousel.addEventListener('pointerleave',e=>{if(e.pointerType!=='touch'){hoverPaused=false;syncAutoplay();}});
-carousel.addEventListener('focusin',e=>{if(e.target.matches(':focus-visible')){keyboardPaused=true;syncAutoplay();}});
-carousel.addEventListener('focusout',e=>{if(!carousel.contains(e.relatedTarget)){keyboardPaused=false;syncAutoplay();}});
-carousel.addEventListener('pointerdown',e=>{keyboardPaused=false;if(e.pointerType==='touch'){clearTimeout(touchTimer);touchTimer=0;touchPaused=true;}syncAutoplay();});
+listen(carousel,'pointerenter',e=>{if(e.pointerType!=='touch'){hoverPaused=true;syncAutoplay();}});
+listen(carousel,'pointerleave',e=>{if(e.pointerType!=='touch'){hoverPaused=false;syncAutoplay();}});
+listen(carousel,'focusin',e=>{if(e.target.matches(':focus-visible')){keyboardPaused=true;syncAutoplay();}});
+listen(carousel,'focusout',e=>{if(!carousel.contains(e.relatedTarget)){keyboardPaused=false;syncAutoplay();}});
+listen(carousel,'pointerdown',e=>{keyboardPaused=false;if(e.pointerType==='touch'){clearTimeout(touchTimer);touchTimer=0;touchPaused=true;}syncAutoplay();});
 function resumeAfterTouch(){clearTimeout(touchTimer);touchTimer=setTimeout(()=>{touchTimer=0;touchPaused=false;syncAutoplay();},800);}
-addEventListener('pointerup',e=>{if(e.pointerType==='touch'&&touchPaused)resumeAfterTouch();});
-addEventListener('pointercancel',e=>{if(e.pointerType==='touch'&&touchPaused)resumeAfterTouch();});
-track.addEventListener('scroll',()=>{if(touchTimer)resumeAfterTouch();},{passive:true});
-playback.addEventListener('click',()=>{
+listen(window,'pointerup',e=>{if(e.pointerType==='touch'&&touchPaused)resumeAfterTouch();});
+listen(window,'pointercancel',e=>{if(e.pointerType==='touch'&&touchPaused)resumeAfterTouch();});
+listen(track,'scroll',()=>{if(touchTimer)resumeAfterTouch();},{passive:true});
+listen(playback,'click',()=>{
  manualPaused=!manualPaused;const label=manualPaused?'继续自动轮播':'暂停自动轮播';
  playback.setAttribute('aria-label',label);playback.title=label;playback.setAttribute('aria-pressed',String(manualPaused));
  playback.innerHTML=`<i data-lucide="${manualPaused?'play':'pause'}" aria-hidden="true"></i>`;lucide.createIcons();syncAutoplay();
 });
-new IntersectionObserver(([entry])=>{inView=entry.isIntersecting;syncAutoplay();},{threshold:.05}).observe(track);
-new ResizeObserver(()=>{loopStep=measureLoop();queueCarousel();syncAutoplay();}).observe(track);
-new MutationObserver(syncAutoplay).observe(detail,{attributes:true,attributeFilter:['open']});
-document.addEventListener('visibilitychange',syncAutoplay);reducedMotion.addEventListener('change',syncAutoplay);
-document.fonts.ready.then(()=>{loopStep=measureLoop();queueCarousel();syncAutoplay();});
-return {reset(){loopCards.forEach(card=>track.append(card));track.scrollTo({left:0,behavior:'instant'});autoPosition=0;queueCarousel();syncAutoplay();}};
+const intersectionObserver=new IntersectionObserver(([entry])=>{inView=entry.isIntersecting;syncAutoplay();},{threshold:.05});intersectionObserver.observe(track);
+const resizeObserver=new ResizeObserver(()=>{loopStep=measureLoop();queueCarousel();syncAutoplay();});resizeObserver.observe(track);
+const detailObserver=new MutationObserver(syncAutoplay);detailObserver.observe(detail,{attributes:true,attributeFilter:['open','data-state']});
+listen(document,'visibilitychange',syncAutoplay);listen(reducedMotion,'change',syncAutoplay);
+document.fonts.ready.then(()=>{if(!destroyed){loopStep=measureLoop();queueCarousel();syncAutoplay();}});
+return {
+ reset(){loopCards.forEach(card=>track.append(card));track.scrollTo({left:0,behavior:'instant'});autoPosition=0;queueCarousel();syncAutoplay();},
+ destroy(){destroyed=true;controller.abort();intersectionObserver.disconnect();resizeObserver.disconnect();detailObserver.disconnect();cancelAnimationFrame(autoFrame);cancelAnimationFrame(carouselFrame);clearTimeout(touchTimer);carousel.dataset.autoplay='paused';}
+};
 }
 const carousels=[...document.querySelectorAll('.carousel')].map(setupCarousel);
 document.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>{
@@ -234,7 +244,6 @@ document.querySelectorAll('[data-filter]').forEach(button=>button.addEventListen
  document.querySelector('#experience').hidden=filter!=='all'&&filter!=='experience';
  document.querySelector('#experiments').hidden=filter!=='all'&&filter!=='ai';
  document.querySelector('#work > .grid').hidden=filter!=='all'&&filter!=='ai';
- document.querySelector('#hackathon-heading').hidden=filter!=='all'&&filter!=='ai';
  carousels.forEach(carousel=>carousel.reset());
 }));
 
