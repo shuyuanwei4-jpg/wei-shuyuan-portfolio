@@ -69,7 +69,7 @@ function projectMedia(media){
   return `<figure class="project-media demo-media${layout==='landscape'?' landscape-media':''}">${idlePoster&&poster?`<div class="video-stage" data-playing="false">${video}<div class="video-idle-poster"><img src="${poster}" alt="${label}封面"><button class="video-poster-play" type="button" aria-label="播放${label}" title="播放视频"><i data-lucide="play" aria-hidden="true"></i></button></div></div>`:video}<figcaption>${label}</figcaption></figure>`;
  }
  const img=`<img src="${src}" alt="${label}" loading="lazy" decoding="async" width="2560" height="1348">`;
- if(layout==='poster')return `<figure class="project-media poster-media"><a href="${src}" target="_blank" rel="noopener noreferrer" aria-label="查看${label}原图（新窗口打开）">${img}</a><figcaption>${label}</figcaption></figure>`;
+ if(layout==='poster')return `<figure class="project-media poster-media"><a href="${src}" target="_blank" rel="noopener noreferrer" aria-label="查看${label}原图（新窗口打开）">${img}</a></figure>`;
  return `<figure class="project-media screenshot-media">${href?`<a href="${href}" target="_blank" rel="noopener noreferrer" aria-label="${label}，在线游玩（新窗口打开）">${img}</a>`:img}<figcaption>${label}${href?' / <a href="'+href+'" target="_blank" rel="noopener noreferrer">meowcat.fun <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>':''}</figcaption></figure>`;
 }
 function renderDetail(p){

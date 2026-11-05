@@ -1,0 +1,7 @@
+/* Remove the film-strip class or this stylesheet to restore the plain carousel. */
+.film-strip{position:relative;min-width:0;padding:32px 10px;background:var(--ink);border-radius:0 40px 0 0}
+.film-strip::before,.film-strip::after{content:"";position:absolute;left:16px;right:16px;height:10px;background:repeating-linear-gradient(90deg,var(--paper) 0 14px,transparent 14px 30px);pointer-events:none}
+.film-strip::before{top:11px}.film-strip::after{bottom:11px}
+.film-strip>.carousel-track{margin:0;padding:16px 12px 26px;background:var(--paper)}
+.film-strip+.carousel-controls{margin-top:16px}
+@media(max-width:720px){.film-strip{padding:26px 6px;border-top-right-radius:30px}.film-strip::before,.film-strip::after{left:12px;right:12px;height:8px;background-size:24px 100%;background-image:repeating-linear-gradient(90deg,var(--paper) 0 11px,transparent 11px 24px)}.film-strip::before{top:9px}.film-strip::after{bottom:9px}.film-strip>.carousel-track{padding-inline:10px}}
