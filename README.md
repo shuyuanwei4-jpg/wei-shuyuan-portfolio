@@ -43,3 +43,11 @@ GitHub Pages 会自动更新，通常需要几分钟。保持 `assets` 的相对
 移除 `index.html` 中 `afk-growth.css` 的引用，可以单独恢复 AFK 原外框。胶片可通过对照上述版本的 `film-frame.css` 单独恢复上下留白。
 
 更新日期：2026-11-05。
+
+## 黑客松海报与现场照片更新
+
+首页在 KIN//X 与「你说我猜」上方突出「抖音 AI 创变者黑客松」。两张卡片默认展示原有文字，鼠标悬停或键盘聚焦时渐显项目海报。
+
+KIN//X 详情顺序为演示视频、MVP 说明、易拉宝海报、「创作过程」及原有七张介绍图片。「你说我猜」保留原有演示视频和电脑/手机海报切换，并补充三张黑客松现场照片。海报保留完整比例，现场照片支持新窗口查看原图。
+
+这一步修改前的版本保存在本地 Git 标签 `before-hackathon-media-20261105`（提交 `47fbaa0`），完整回退包为 `D:/WeiShuyuan-Portfolio-before-hackathon-20261105.zip`。可从该标签恢复 `index.html`、`refinement.css`、`refinement.js`，或直接解压回退包查看原版。
