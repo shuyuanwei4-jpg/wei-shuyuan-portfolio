@@ -4,7 +4,7 @@ document.querySelector('.hero-copy').innerHTML='<strong>AI 互动产品 / 产品
 const projects=[
  {id:'hellycat',category:'ai',title:'HellyCat 洗猫猫',description:'个人主导、借助 AI 独立完成的休闲小游戏。从玩法、视觉、代码、音乐，到部署与 APK 打包，完成完整开发流程，支持电脑浏览器与安卓手机。',role:'个人主导 · AI 协作独立开发',date:'个人项目',color:'#b9f227',ink:'#111',url:'https://meowcat.fun/',apkUrl:'https://meowcat.fun/downloads/wash-cat-1.0.5.apk',media:[['video','手机实拍演示','assets/hellycat-mobile-demo.mp4',null,'assets/hellycat-demo-poster.jpg'],['image','猫咪小屋 · 白猫模式','assets/hellycat-preview.png','https://meowcat.fun/']]},
  {id:'kenx',category:'ai',title:'KIN//X AI 动捕系统',cardTitle:'KIN//X AI动捕产品',hoverCover:'assets/kinx-cover.webp',hoverCoverAlt:'KIN//X 抖音 AI 创变者黑客松 A3 项目海报',description:'AI 动捕产品实战。一款轻量化 AI 动捕工具，基于用户自定义素材视频重建 3D 数字分身及还原动作，支持多角度预览、FBX 可编辑导出与图生 3D 模型，集成多个模型一条龙输出，降低 3D 动作动画创作门槛。',cardDescription:'围绕传统动捕软件缺乏一体化导出流程的痛点，构建轻量化 AI 动捕工具。负责用户调研、产品体验、视觉规范、前端原型与路演，晋级华中赛区大区赛。',role:'用户研究 / 视觉定性 / 海报物料 / 产品负责人 / 前端优化 / 答辩路演',cardRole:'产品负责人 · 前端原型',date:'2026.06—2026.07 · 抖音 AI 创变者计划黑客松',cardDate:'2026.06—2026.07 · 抖音 AI 创变者黑客松',award:'抖音 AI 创变者计划黑客松长三角站二等奖；晋级大区赛 · 华中赛区',color:'#fff',ink:'#111',media:[['video','KIN//X 产品演示','assets/kinx-demo.mp4',null,'assets/kinx-demo-poster.jpg','landscape']],slides:[['4','背景调研'],['5','用户研究'],['6','用户分析与落地计划'],['7','用户画像'],['8','产品介绍与功能一览'],['9','创作过程'],['10','海报设计、界面设计与路演现场']]},
- {id:'cat-talk',category:'ai',title:'你说我猜 · 猫语趣味沟通器',hoverCover:'assets/cat-talk-poster-desktop.jpg',hoverCoverAlt:'你说我猜作品海报：蓝色浏览器与猫咪贴纸',description:'面向伴侣、家人和朋友的移动端趣味沟通产品。以猫语音频、贴纸可视化和双人猜谜承载情绪表达，尝试降低直接表达的压力，为关系修复、默契测试和亲子互动创造轻松的沟通入口。',cardDescription:'面向亲密关系中的情绪表达与互动需求，用 AI 猫语、贴纸可视化和双人猜谜设计轻松的沟通体验。负责需求梳理、交互流程与高保真 UI。获抖音 AI 创变者黑客松·游园会之星奖、第 14 届未来设计师大赛省二等奖。',role:'项目负责人 · 体验与交互设计',date:'2026.06—2026.07 · 抖音 AI 创变者黑客松',award:'抖音 AI 创变者黑客松 · 游园会之星奖；第 14 届未来设计师大赛省二等奖',color:'#3155f5',ink:'#fff',media:[['video','你说我猜 · 产品交互演示','assets/cat-talk-demo.mp4',null,'assets/cat-talk-demo-poster.jpg','landscape']]},
+ {id:'cat-talk',category:'ai',title:'你说我猜 · 猫语趣味沟通器',hoverCover:'assets/cat-talk-poster-desktop.jpg',hoverCoverAlt:'你说我猜作品海报：蓝色浏览器与猫咪贴纸',description:'面向伴侣、家人和朋友的移动端趣味沟通产品。以猫语音频、贴纸可视化和双人猜谜承载情绪表达，尝试降低直接表达的压力，为关系修复、默契测试和亲子互动创造轻松的沟通入口。',cardDescription:'面向亲密关系中的情绪表达与互动需求，用 AI 猫语、贴纸可视化和双人猜谜设计轻松的沟通体验。负责需求梳理、交互流程与高保真 UI。获抖音 AI 创变者黑客松·游园会之星奖、第 14 届未来设计师大赛省二等奖。',role:'项目负责人 · 体验与交互设计',date:'2026.06—2026.07 · 抖音 AI 创变者黑客松',award:'抖音 AI 创变者黑客松 · 游园会之星奖；第 14 届未来设计师大赛省二等奖',color:'#3155f5',ink:'#fff',media:[['video','你说我猜 · 产品交互演示','assets/cat-talk-demo.mp4',null,'assets/cat-talk-poster-desktop.jpg','landscape',true]]},
  {id:'afk',category:'experience',title:'AFK · AIGC 创意与增长',description:'在莉莉丝《剑与远征》项目组参与角色宣发与广告创意，协作建立 AIGC 素材生产流程；结合多轮 A/B 测试、海外用户洞察与投放复盘迭代创意。',role:'创意策划实习生 · 莉莉丝游戏',date:'2026.02—2026.04 · AFK Arena',color:'#fff',ink:'#111',media:[['video','广告与宣发视频'],['image','热点情报站截图（仅图片展示）'],['image','AIGC 工作流与投放复盘']]},
  {id:'huashan',category:'practice',title:'花山之响',description:'交互艺术装置作品。获第 20 届中国好创意数智声景专项赛全国总决赛数字交互空间类国家二等奖。',role:'交互装置 · 数智声景',date:'2026.08 · 国家二等奖',color:'#3155f5',ink:'#fff',media:[['video','装置现场与交互演示'],['image','空间与装置实拍'],['image','声景与交互设计']]},
  {id:'ancient-type',category:'practice',title:'古世界语的呢喃',description:'实验性字体设计项目。以视频与图片呈现字形实验、动态表达与设计过程。',role:'实验字体设计 · 动态视觉',date:'字体与视觉实验·中国好创意国家级二等奖',award:'中国好创意国家级二等奖',color:'#ff6b35',ink:'#111',media:[['video','字体动态实验'],['image','字形设计'],['image','字体应用与视觉实验']]},
@@ -65,6 +65,7 @@ const surface=detail.querySelector('.project-surface');
 const detailContent=detail.querySelector('.detail-content');
 let sourceCard=null,sourceFocus=null,surfaceAnimation=null,contentAnimation=null;
 let detailCarousels=[];
+let mvpPosterObserver=null;
 function placeholder([type,label]){
  return `<figure class="media-placeholder ${type==='video'?'video-placeholder':'image-placeholder'}"><i data-lucide="${type==='video'?'clapperboard':'image'}" aria-hidden="true"></i><figcaption><strong>${label}</strong><span>${type==='video'?'视频':'图片'}待补充</span></figcaption></figure>`;
 }
@@ -81,6 +82,7 @@ function projectMedia(media){
 }
 function renderDetail(p){
  detailCarousels.forEach(carousel=>carousel.destroy());detailCarousels=[];
+ mvpPosterObserver?.disconnect();mvpPosterObserver=null;
  const headings=p.category==='ai'?['用户与问题','关键决策与交互','验证与复盘']:['创作与背景','设计与制作过程','结果与反思'];
  const body=document.querySelector('#detail-body');
  const playLink=p.url?`<a class="play-project" href="${p.url}" target="_blank" rel="noopener noreferrer">在线游玩 <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>`:'';
@@ -110,6 +112,16 @@ function renderDetail(p){
  detail.style.setProperty('--project-bg',p.color);detail.style.setProperty('--project-ink',p.ink);
  lucide.createIcons({root:body});
  detailCarousels=[...body.querySelectorAll('.carousel')].map(carousel=>setupCarousel(carousel,{detailView:true}));
+ const mvp=body.querySelector('#kinx-mvp');
+ if(mvp){
+  const poster=mvp.querySelector('.kinx-mvp-poster'),copy=mvp.querySelector('.case-copy'),summary=mvp.querySelector('summary');
+  const alignPoster=()=>{
+   if(innerWidth<=720)return;
+   const top=summary.offsetTop+summary.offsetHeight-copy.offsetTop-poster.offsetHeight;
+   mvp.style.setProperty('--mvp-poster-top',Math.max(76,top)+'px');
+  };
+  mvpPosterObserver=new ResizeObserver(alignPoster);mvpPosterObserver.observe(copy);mvpPosterObserver.observe(poster);
+ }
 }
 function cardTransform(card){
  const rect=card.getBoundingClientRect();
@@ -147,6 +159,7 @@ detail.querySelector('.return-projects').addEventListener('click',closeProject);
 detail.addEventListener('cancel',e=>{e.preventDefault();closeProject();});
 detail.addEventListener('close',()=>{
  detailCarousels.forEach(carousel=>carousel.destroy());detailCarousels=[];
+ mvpPosterObserver?.disconnect();mvpPosterObserver=null;
  detail.querySelectorAll('video').forEach(video=>video.pause());
  surfaceAnimation?.cancel();contentAnimation?.cancel();detail.dataset.state='closed';
  document.body.classList.remove('project-open');
@@ -195,13 +208,14 @@ listen(track,'keydown',e=>{
 });
 // Move a card to the end only after it has completely left the viewport.
 let autoFrame=0,lastAutoTime=0,autoPosition=0,loopStep=0;
+const autoPixelsPerSecond=detailView?120:72;
 let inView=false,hoverPaused=false,keyboardPaused=false,touchPaused=false,manualPaused=false,touchTimer=0;
 function measureLoop(){const first=track.firstElementChild;return first?first.getBoundingClientRect().width+parseFloat(getComputedStyle(track).columnGap):0;}
 function canAutoplay(){return !destroyed&&inView&&!hoverPaused&&!keyboardPaused&&!touchPaused&&!manualPaused&&!document.hidden&&!reducedMotion.matches&&(detailView?detail.open&&detail.dataset.state!=='closing':!detail.open&&!document.querySelector('#signals').hidden)&&track.scrollWidth>track.clientWidth+1;}
 function animateCarousel(time){
  autoFrame=0;if(!canAutoplay()){syncAutoplay();return;}
  if(lastAutoTime){
-  autoPosition+=Math.min(time-lastAutoTime,64)*.072;
+  autoPosition+=Math.min(time-lastAutoTime,64)*autoPixelsPerSecond/1000;
   while(loopStep>0&&autoPosition>=loopStep){track.append(track.firstElementChild);autoPosition-=loopStep;}
   track.scrollLeft=autoPosition;
  }

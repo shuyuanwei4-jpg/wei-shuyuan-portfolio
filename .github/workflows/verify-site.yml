@@ -14,8 +14,11 @@ jobs:
           curl --retry 3 --fail --silent --show-error "$SITE_URL/" -o /tmp/portfolio.html
           grep -q 'AI 互动产品与体验设计' /tmp/portfolio.html
           grep -q '媒介是人的延申。' /tmp/portfolio.html
-          grep -q 'refinement.js?v=20261105-8' /tmp/portfolio.html
-          grep -q 'refinement.css?v=20261105-8' /tmp/portfolio.html
+          grep -q 'refinement.js?v=20261105-9' /tmp/portfolio.html
+          grep -q 'refinement.css?v=20261105-9' /tmp/portfolio.html
+          curl --retry 3 --fail --silent --show-error "$SITE_URL/refinement.js" -o /tmp/portfolio.js
+          grep -Fq 'autoPixelsPerSecond=detailView?120:72' /tmp/portfolio.js
+          grep -Fq "'assets/cat-talk-poster-desktop.jpg','landscape',true" /tmp/portfolio.js
           if grep -q 'hackathon-heading' /tmp/portfolio.html; then exit 1; fi
           grep -q 'kinx-mvp-poster' /tmp/portfolio.html
           grep -q 'carousel-track event-gallery' /tmp/portfolio.html
