@@ -14,8 +14,8 @@ jobs:
           curl --retry 3 --fail --silent --show-error "$SITE_URL/" -o /tmp/portfolio.html
           grep -q 'AI 互动产品与体验设计' /tmp/portfolio.html
           grep -q '媒介是人的延申。' /tmp/portfolio.html
-          grep -q 'refinement.js?v=20261112-1' /tmp/portfolio.html
-          grep -q 'refinement.css?v=20261112-1' /tmp/portfolio.html
+          grep -q 'refinement.js?v=20261112-2' /tmp/portfolio.html
+          grep -q 'refinement.css?v=20261112-2' /tmp/portfolio.html
           grep -q 'AIGC Work' /tmp/portfolio.html
           grep -q 'data-filter="aigc"' /tmp/portfolio.html
           grep -q 'id="aigc-carousel"' /tmp/portfolio.html
@@ -30,6 +30,7 @@ jobs:
           grep -q "award:'中国好创意省级三等奖'" /tmp/portfolio.js
           grep -q 'has-hover-cover' /tmp/portfolio.js
           grep -Fq 'https://www.tiktok.com/@afkarena.crush' /tmp/portfolio.js
+          grep -Fq '核心素材因游戏行业保密协议无法展示' /tmp/portfolio.js
           if grep -q 'hackathon-heading' /tmp/portfolio.html; then exit 1; fi
           grep -q 'kinx-mvp-poster' /tmp/portfolio.html
           grep -q 'carousel-track event-gallery' /tmp/portfolio.html
