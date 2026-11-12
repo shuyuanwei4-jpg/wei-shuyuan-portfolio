@@ -24,6 +24,7 @@ html{scrollbar-gutter:stable}body.project-open{overflow:hidden}
 .demo-media{display:grid;justify-items:center;gap:18px;padding:28px;background:#202220;color:#fff;border-radius:0 48px 0 0}.demo-media figcaption{padding:0}
 .landscape-media video{width:100%;aspect-ratio:16/9;border-radius:0}
 .project-slides{display:grid;gap:40px;margin-top:48px}.project-slide{margin:0;min-width:0;scroll-margin-top:108px}.project-slide>a{display:block;background:#fff}.project-slide img{display:block;width:100%;height:auto;aspect-ratio:2425/1364;object-fit:contain;border-radius:0}
+#afk-intelligence>.project-slides{grid-column:1 / -1;margin-top:0}
 body.custom-cursor .project-media video{cursor:auto!important}.project-media img{display:block;width:100%;height:auto;aspect-ratio:2560/1348;object-fit:contain;background:#a7d7ea;border:1px solid var(--ink);border-radius:0 40px 0 0}.external-media img{aspect-ratio:auto;background:#111}
 .project-media figcaption{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding-block:14px;font-size:var(--text-small);line-height:1.8}.project-media figcaption a{display:inline-flex;align-items:center;gap:6px}.project-media figcaption svg{width:18px;height:18px}.project-media figcaption a:hover{text-decoration:underline;text-underline-offset:4px}
 .featured,.card{border-radius:0 64px 0 0}.featured{overflow:hidden}.status{border-radius:0 28px 0 0}.close{border-radius:0 14px 0 0}
