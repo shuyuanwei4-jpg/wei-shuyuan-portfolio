@@ -28,6 +28,8 @@ GitHub Pages 会自动更新，通常需要几分钟。保持 `assets` 的相对
 
 「无声的发泄」仅展示视频和介绍，不包含游玩入口。尚未上传的其他项目素材保留占位。
 
+AFK 实习详情页展示 AFK.Crush 的 TikTok 账号截图；点击图片或「查看 TikTok 作品」，在新标签页打开 https://www.tiktok.com/@afkarena.crush 。截图为 `assets/afk-crush-tiktok.webp`，保留完整画面与原始比例，支持电脑和手机查看。
+
 ## AIGC 创作
 
 主页面「AI 产品」右侧新增「AIGC 创作」筛选，选中后显示并定位到 Experience 下方的「AIGC Work」。标题大小沿用 Experience；三张作品卡片共用一个从左向右自动滚动的轮播和胶片外框，悬停暂停，离开继续，支持手动切换、键盘与触屏操作。
