@@ -5,7 +5,7 @@ const projects=[
  {id:'hellycat',category:'ai',title:'HellyCat 洗猫猫',description:'个人主导、借助 AI 独立完成的休闲小游戏。从玩法、视觉、代码、音乐，到部署与 APK 打包，完成完整开发流程，支持电脑浏览器与安卓手机。',role:'个人主导 · AI 协作独立开发',date:'个人项目',color:'#b9f227',ink:'#111',url:'https://meowcat.fun/',apkUrl:'https://meowcat.fun/downloads/wash-cat-1.0.5.apk',media:[['video','手机实拍演示','assets/hellycat-mobile-demo.mp4',null,'assets/hellycat-demo-poster.jpg'],['image','猫咪小屋 · 白猫模式','assets/hellycat-preview.png','https://meowcat.fun/']]},
  {id:'kenx',category:'ai',title:'KIN//X AI 动捕系统',cardTitle:'KIN//X AI动捕产品',hoverCover:'assets/kinx-cover.webp',hoverCoverAlt:'KIN//X 抖音 AI 创变者黑客松 A3 项目海报',description:'AI 动捕产品实战。一款轻量化 AI 动捕工具，基于用户自定义素材视频重建 3D 数字分身及还原动作，支持多角度预览、FBX 可编辑导出与图生 3D 模型，集成多个模型一条龙输出，降低 3D 动作动画创作门槛。',cardDescription:'围绕传统动捕软件缺乏一体化导出流程的痛点，构建轻量化 AI 动捕工具。负责用户调研、产品体验、视觉规范、前端原型与路演，晋级华中赛区大区赛。',role:'用户研究 / 视觉定性 / 海报物料 / 产品负责人 / 前端优化 / 答辩路演',cardRole:'产品负责人 · 前端原型',date:'2026.06—2026.07 · 抖音 AI 创变者计划黑客松',cardDate:'2026.06—2026.07 · 抖音 AI 创变者黑客松',award:'抖音 AI 创变者计划黑客松长三角站二等奖；晋级大区赛 · 华中赛区',color:'#fff',ink:'#111',media:[['video','KIN//X 产品演示','assets/kinx-demo.mp4',null,'assets/kinx-demo-poster.jpg','landscape']],slides:[['4','背景调研'],['5','用户研究'],['6','用户分析与落地计划'],['7','用户画像'],['8','产品介绍与功能一览'],['9','创作过程'],['10','海报设计、界面设计与路演现场']]},
  {id:'cat-talk',category:'ai',title:'你说我猜 · 猫语趣味沟通器',hoverCover:'assets/cat-talk-poster-desktop.jpg',hoverCoverAlt:'你说我猜作品海报：蓝色浏览器与猫咪贴纸',description:'面向伴侣、家人和朋友的移动端趣味沟通产品。以猫语音频、贴纸可视化和双人猜谜承载情绪表达，尝试降低直接表达的压力，为关系修复、默契测试和亲子互动创造轻松的沟通入口。',cardDescription:'面向亲密关系中的情绪表达与互动需求，用 AI 猫语、贴纸可视化和双人猜谜设计轻松的沟通体验。负责需求梳理、交互流程与高保真 UI。获抖音 AI 创变者黑客松·游园会之星奖、第 14 届未来设计师大赛省二等奖。',role:'项目负责人 · 体验与交互设计',date:'2026.06—2026.07 · 抖音 AI 创变者黑客松',award:'抖音 AI 创变者黑客松 · 游园会之星奖；第 14 届未来设计师大赛省二等奖',color:'#3155f5',ink:'#fff',media:[['video','你说我猜 · 产品交互演示','assets/cat-talk-demo.mp4',null,'assets/cat-talk-poster-desktop.jpg','landscape',true]]},
- {id:'afk',category:'experience',title:'AFK · AIGC 创意与增长',description:'上海莉莉丝科技股份有限公司（Lilith Games｜上海游戏四小龙 · 中国出海手游前三强）。在《剑与远征》（AFK Arena｜15 亿美元级放置 RPG）项目组参与英雄概念、宣发创意、买量素材及 AIGC 生产管线建设，以海外用户洞察与投放数据驱动内容迭代。',cardDescription:'在莉莉丝《剑与远征》项目组参与角色宣发与广告创意，协作建立 AIGC 素材生产流程；结合多轮 A/B 测试、海外用户洞察与投放复盘迭代创意。',role:'创意策划实习生 ｜ 《剑与远征》项目组',cardRole:'创意策划实习生 · 莉莉丝游戏',date:'2026.02—2026.04 · AFK Arena',color:'#fff',ink:'#111',disclosure:'核心素材因游戏行业保密协议无法展示。以下为实习职责、成果概述及公开账号内容。',mediaSummary:'公开账号截图 / TikTok 作品',media:[['image','AFK.Crush · 已公开发布作品','assets/afk-crush-tiktok.webp','https://www.tiktok.com/@afkarena.crush',null,'external']],caseSections:[
+ {id:'afk',category:'experience',title:'AFK · AIGC 创意与增长',hoverCover:'assets/afk-hover-desktop.webp',hoverCoverMobile:'assets/afk-hover-mobile.webp',hoverCoverAlt:'莉莉丝游戏《剑与远征》项目组 · 创意策划实习',description:'上海莉莉丝科技股份有限公司（Lilith Games｜上海游戏四小龙 · 中国出海手游前三强）。在《剑与远征》（AFK Arena｜15 亿美元级放置 RPG）项目组参与英雄概念、宣发创意、买量素材及 AIGC 生产管线建设，以海外用户洞察与投放数据驱动内容迭代。',cardDescription:'在莉莉丝《剑与远征》项目组参与角色宣发与广告创意，协作建立 AIGC 素材生产流程；结合多轮 A/B 测试、海外用户洞察与投放复盘迭代创意。',role:'创意策划实习生 ｜ 《剑与远征》项目组',cardRole:'创意策划实习生 · 莉莉丝游戏',date:'2026.02—2026.04 · AFK Arena',color:'#fff',ink:'#111',disclosure:'核心素材因游戏行业保密协议无法展示。以下为实习职责、成果概述及公开账号内容。',mediaSummary:'公开账号截图 / TikTok 作品',media:[['image','AFK.Crush · 已公开发布作品','assets/afk-crush-tiktok.webp','https://www.tiktok.com/@afkarena.crush',null,'external']],caseSections:[
   {title:'英雄概念与宣发创意',points:['<strong>英雄概念与机制：</strong>深度参与德古拉等核心宣发英雄的概念设定与游戏技能机制脑暴。','<strong>宣发创意与制作：</strong>围绕欧美二次元受众提炼吸睛卖点，参与买量广告全链路制作。','<strong>方案落地：</strong>买量广告与 Q 版表情包素材设定案一次通过，并获全域广告投放采纳。']},
   {title:'破圈传播与商业化验证',points:['<strong>首发传播：</strong>核心英雄素材首发当日，海外社区互动量突破 <strong>1W+</strong>。','<strong>累计互动：</strong>产出素材累计获得 <strong>3.1W+ 互动点赞</strong>。','<strong>商业化效果：</strong>经 UA 数据中台与投放系统检验，首发核心素材首月<strong>素材 ROI 提升 28.5%</strong>，<strong>30 日 LTV 增长 16.2%</strong>，支持广告点击与转化优化。']},
   {title:'AIGC 管线与竞品分析',points:['<strong>原生素材生产管线：</strong>跑通 Nano Banana Pro + Seedance 2.0 / ViduQ3 + SunoAI 的原生素材工业化流水线。','<strong>热点广告分析平台：</strong>搭建基于 Gemini 的热点广告数据分析平台。','<strong>竞品与投放洞察：</strong>定期输出欧美热点素材周报及投放深度分析，为创意策划与素材迭代提供依据。']}
@@ -55,11 +55,22 @@ articles.forEach(article=>{
   article.classList.add('has-hover-cover');
   const cover=document.createElement('div');cover.className='card-hover-cover';cover.setAttribute('aria-hidden','true');
   if(hoverCover){
-   const image=document.createElement('img');image.src=hoverCover;image.alt=p.hoverCoverAlt||p.title+' · 作品封面';image.loading='lazy';image.decoding='async';cover.append(image);
+   const image=document.createElement('img');image.src=hoverCover;image.alt=p.hoverCoverAlt||p.title+' · 作品封面';image.loading='lazy';image.decoding='async';
+   if(p.hoverCoverMobile){
+    const picture=document.createElement('picture'),source=document.createElement('source');source.media='(max-width:720px)';source.srcset=p.hoverCoverMobile;
+    picture.append(source,image);cover.append(picture);
+   }else cover.append(image);
   }else{
    cover.classList.add('cover-placeholder');cover.innerHTML='<i data-lucide="image" aria-hidden="true"></i><span>作品预览待补充</span>';
   }
   article.append(cover);
+  if(p.hoverCoverMobile){
+   const clearTouchPreview=()=>article.classList.remove('is-touch-preview');
+   article.addEventListener('pointerdown',e=>{if(e.pointerType==='touch')article.classList.add('is-touch-preview');},{passive:true});
+   window.addEventListener('pointerup',clearTouchPreview,{passive:true});
+   window.addEventListener('pointercancel',clearTouchPreview,{passive:true});
+   window.addEventListener('blur',clearTouchPreview);
+  }
  }
  if(p.cover){
   article.classList.add('has-cover');

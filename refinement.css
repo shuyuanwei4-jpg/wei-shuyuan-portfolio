@@ -37,6 +37,8 @@ body.custom-cursor .project-media video{cursor:auto!important}.project-media img
 .card[data-project=kenx]:focus-visible{box-shadow:12px 14px 0 #999}.card[data-project=kenx]:active{box-shadow:4px 5px 0 #999}
 .card-hover-cover{position:absolute;inset:0;z-index:1;overflow:hidden;border-radius:inherit;background:#edf4f8;opacity:0;pointer-events:none;transition:opacity .65s cubic-bezier(.22,1,.36,1)}
 [data-project=kenx] .card-hover-cover{background:#0b0b0b}.card-hover-cover img{display:block;width:100%;height:100%;object-fit:contain}
+[data-project=afk] .card-hover-cover{background:#000}.card-hover-cover picture{display:block;width:100%;height:100%}
+[data-project=afk]:is(:focus-visible,.is-touch-preview) .card-hover-cover{opacity:1}
 [data-project=cat-talk] .card-hover-cover img{object-fit:cover;object-position:left top;transform:scale(1.3);transform-origin:left top}
 @media(hover:hover){.has-hover-cover:hover .card-hover-cover{opacity:1}}.has-hover-cover:focus-visible .card-hover-cover{opacity:1}
 #kinx-mvp{position:relative;row-gap:28px}#kinx-mvp>.kinx-mvp-poster{grid-column:1 / -1;justify-self:start;width:160px;max-width:100%;margin:0}.poster-section>.project-slides{margin-top:0}
