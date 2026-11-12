@@ -14,8 +14,13 @@ jobs:
           curl --retry 3 --fail --silent --show-error "$SITE_URL/" -o /tmp/portfolio.html
           grep -q 'AI 互动产品与体验设计' /tmp/portfolio.html
           grep -q '媒介是人的延申。' /tmp/portfolio.html
-          grep -q 'refinement.js?v=20261112-4' /tmp/portfolio.html
-          grep -q 'refinement.css?v=20261112-4' /tmp/portfolio.html
+          grep -q 'refinement.js?v=20261112-5' /tmp/portfolio.html
+          grep -q 'refinement.css?v=20261112-5' /tmp/portfolio.html
+          grep -q 'id="tumate-introduction-title">项目介绍' /tmp/portfolio.html
+          for number in 11 12 13 14 15 16 17; do
+            grep -Fq "assets/tumate-intro-$number.webp" /tmp/portfolio.html
+            curl --retry 3 --fail --silent --show-error "$SITE_URL/assets/tumate-intro-$number.webp" -o /dev/null
+          done
           grep -q 'id="afk-intelligence"' /tmp/portfolio.html
           grep -q 'AIGC Work' /tmp/portfolio.html
           grep -q 'data-filter="aigc"' /tmp/portfolio.html

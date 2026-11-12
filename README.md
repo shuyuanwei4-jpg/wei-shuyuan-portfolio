@@ -46,6 +46,8 @@ AFK 实习详情页展示 AFK.Crush 的 TikTok 账号截图；点击图片或「
 
 三个上传的压缩视频保留原始清晰度、声音和时长，只调整容器索引以便浏览器尽快开始播放。视频为 `assets/integrity-film.mp4`（约 62 秒）、`assets/nuo-dance.mp4`（约 103 秒）、`assets/tumate.mp4`（约 83 秒），相应封面为同名 `-poster.jpg`。
 
+途搭子详情页底部新增「项目介绍」，按原文件编号 11–17 纵向展示七张介绍图；图片占正文整行，保留完整比例和 2425 × 1364 分辨率，点击可查看大图，适配电脑和手机。优化后的文件为 `assets/tumate-intro-11.webp` 至 `assets/tumate-intro-17.webp`。
+
 修改前版本为 `before-aigc-work-20261105`（提交 `484942c`），完整备份 `D:/WeiShuyuan-Portfolio-before-aigc-work-20261105.zip`。
 
 接入视频前的板块版本为 `before-aigc-videos-20261105`（提交 `370f681`），完整备份 `D:/WeiShuyuan-Portfolio-before-aigc-videos-20261105.zip`。
