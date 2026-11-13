@@ -10,7 +10,7 @@ const projects=[
   {title:'破圈传播与商业化验证',points:['<strong>首发传播：</strong>核心英雄素材首发当日，海外社区互动量突破 <strong>1W+</strong>。','<strong>累计互动：</strong>产出素材累计获得 <strong>3.1W+ 互动点赞</strong>。','<strong>商业化效果：</strong>经 UA 数据中台与投放系统检验，首发核心素材首月<strong>素材 ROI 提升 28.5%</strong>，<strong>30 日 LTV 增长 16.2%</strong>，支持广告点击与转化优化。']},
   {title:'AIGC 管线与竞品分析',points:['<strong>原生素材生产管线：</strong>跑通 Nano Banana Pro + Seedance 2.0 / ViduQ3 + SunoAI 的原生素材工业化流水线。','<strong>热点广告分析平台：</strong>搭建基于 Gemini 的热点广告数据分析平台。','<strong>竞品与投放洞察：</strong>定期输出欧美热点素材周报及投放深度分析，为创意策划与素材迭代提供依据。']}
  ]},
- {id:'huashan',category:'practice',title:'花山之响',description:'交互艺术装置作品。获第 20 届中国好创意数智声景专项赛全国总决赛数字交互空间类国家二等奖。',role:'交互装置 · 数智声景',date:'2026.08 · 国家二等奖',color:'#3155f5',ink:'#fff',media:[['video','装置现场与交互演示'],['image','空间与装置实拍'],['image','声景与交互设计']]},
+ {id:'huashan',category:'practice',title:'花山之响',description:'交互艺术装置作品。获第 20 届中国好创意数智声景专项赛全国总决赛数字交互空间类国家二等奖。',role:'交互装置 · 数智声景',date:'2026.08 · 国家二等奖',color:'#3155f5',ink:'#fff',media:[['video','花山之响 · 装置交互演示','assets/huashan-demo.mp4',null,'assets/huashan-photo-1.webp','landscape',true]]},
  {id:'ancient-type',category:'practice',title:'古世界语的呢喃',description:'实验性字体设计项目。以视频与图片呈现字形实验、动态表达与设计过程。',role:'实验字体设计 · 动态视觉',date:'字体与视觉实验·中国好创意国家级二等奖',award:'中国好创意国家级二等奖',color:'#ff6b35',ink:'#111',media:[['video','字体动态实验'],['image','字形设计'],['image','字体应用与视觉实验']]},
  {id:'digital-equity',category:'practice',title:'裂隙之外：数字公平滑动叙事',description:'以数字公平为主题的 HTML5 交互作品。获 2026 年第 20 届中国好创意省级一等奖。',role:'HTML5 · 交互叙事',date:'2026.08 · 中国好创意省级一等奖',color:'#b9f227',ink:'#111',media:[['video','滑动叙事演示'],['image','交互页面'],['image','叙事结构与体验流程']]},
  {id:'her',category:'practice',title:'Her · 电影网页设计',description:'为喜欢的人工智能叙事电影《Her》创作的网页介绍设计。',role:'电影专题 · 网页设计',date:'个人网页设计项目',color:'#edb5d1',ink:'#111',media:[['image','网页首屏设计'],['image','电影叙事章节'],['image','网页界面与细节']]},
@@ -104,6 +104,32 @@ const detailContent=detail.querySelector('.detail-content');
 let sourceCard=null,sourceFocus=null,surfaceAnimation=null,contentAnimation=null;
 let detailCarousels=[];
 let mvpPosterObserver=null;
+const mediaLightbox=document.createElement('dialog');
+mediaLightbox.className='media-lightbox';mediaLightbox.setAttribute('aria-label','花山之响图片大图');
+mediaLightbox.innerHTML='<button class="lightbox-close" type="button" aria-label="关闭大图" autofocus><i data-lucide="x" aria-hidden="true"></i></button><button class="lightbox-prev" type="button" aria-label="上一张图片"><i data-lucide="chevron-left" aria-hidden="true"></i></button><div class="lightbox-stage"><img alt=""></div><button class="lightbox-next" type="button" aria-label="下一张图片"><i data-lucide="chevron-right" aria-hidden="true"></i></button>';
+detail.append(mediaLightbox);lucide.createIcons({root:mediaLightbox});
+let lightboxLinks=[],lightboxIndex=0,lightboxTrigger=null;
+function showLightboxImage(index){
+ lightboxIndex=(index+lightboxLinks.length)%lightboxLinks.length;
+ const link=lightboxLinks[lightboxIndex],image=mediaLightbox.querySelector('img');
+ image.src=link.href;image.alt=link.querySelector('img').alt;
+}
+function openMediaLightbox(link){
+ lightboxLinks=[...link.closest('[data-lightbox-gallery]').querySelectorAll('[data-lightbox-image]')];
+ lightboxTrigger=link;showLightboxImage(lightboxLinks.indexOf(link));
+ mediaLightbox.showModal();if(cursorActive)liftCursor();
+}
+function closeMediaLightbox(){if(mediaLightbox.open)mediaLightbox.close();}
+mediaLightbox.querySelector('.lightbox-close').addEventListener('click',closeMediaLightbox);
+mediaLightbox.querySelector('.lightbox-prev').addEventListener('click',()=>showLightboxImage(lightboxIndex-1));
+mediaLightbox.querySelector('.lightbox-next').addEventListener('click',()=>showLightboxImage(lightboxIndex+1));
+mediaLightbox.addEventListener('click',e=>{if(e.target===mediaLightbox||e.target.classList.contains('lightbox-stage'))closeMediaLightbox();});
+mediaLightbox.addEventListener('cancel',e=>{e.preventDefault();e.stopPropagation();closeMediaLightbox();});
+mediaLightbox.addEventListener('keydown',e=>{
+ if(e.altKey||e.ctrlKey||e.metaKey)return;
+ if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();showLightboxImage(lightboxIndex+(e.key==='ArrowRight'?1:-1));}
+});
+mediaLightbox.addEventListener('close',()=>{if(detail.open)lightboxTrigger?.focus({preventScroll:true});});
 function placeholder([type,label]){
  return `<figure class="media-placeholder ${type==='video'?'video-placeholder':'image-placeholder'}"><i data-lucide="${type==='video'?'clapperboard':'image'}" aria-hidden="true"></i><figcaption><strong>${label}</strong><span>${type==='video'?'视频':'图片'}待补充</span></figcaption></figure>`;
 }
@@ -130,6 +156,7 @@ function renderDetail(p){
  if(p.id==='hellycat')story=document.querySelector('#hellycat-case').innerHTML;
  else if(p.id==='cat-talk')story=document.querySelector('#cat-talk-case').innerHTML;
  else if(p.id==='silent-release')story=document.querySelector('#silent-venting-case').innerHTML;
+ else if(p.id==='huashan')story=document.querySelector('#huashan-case').innerHTML;
  else if(p.id==='wow-balloon')story=`<section class="case-section poster-section"><h3>作品展板</h3>${projectMedia(p.media[1])}</section>`+document.querySelector('#wow-balloon-case').innerHTML;
  else if(p.slides)story=document.querySelector('#kinx-mvp-case').innerHTML+`<section class="case-section poster-section" aria-labelledby="kinx-process-title"><h3 id="kinx-process-title">创作过程</h3><div class="project-slides" aria-label="KIN//X 项目介绍">${p.slides.map(([file,label])=>`<figure class="project-slide"><a href="assets/kinx-${file}.jpg" target="_blank" rel="noopener noreferrer" aria-label="查看${label}原图（新窗口打开）"><img src="assets/kinx-${file}.jpg" alt="${label}" width="2425" height="1364" loading="lazy" decoding="async"></a></figure>`).join('')}</div></section>`;
  else if(p.caseSections)story=p.caseSections.map(section=>`<section class="case-section"><h3>${section.title}</h3><div class="case-copy">${section.text?`<p>${section.text}</p>`:''}${section.points?`<ul class="case-points">${section.points.map(point=>`<li>${point}</li>`).join('')}</ul>`:''}</div></section>`).join('');
@@ -137,7 +164,10 @@ function renderDetail(p){
  if(p.id==='afk')story+=document.querySelector('#afk-intelligence-case').innerHTML;
  if(p.id==='tumate')story+=document.querySelector('#tumate-introduction-case').innerHTML;
  const award=p.award?`<dt>获奖情况</dt><dd>${p.award}</dd>`:'';
- body.innerHTML=`<section class="detail-intro detail-inner"><div><span class="eyebrow">${p.date}</span><h2 id="detail-title">${p.title}</h2><p>${p.description}</p>${p.disclosure?`<p class="confidentiality-note"><strong>${p.disclosure}</strong></p>`:''}<div class="detail-actions">${playLink}${downloadLink}</div></div><dl class="detail-meta"><dt>${p.category==='ai'||p.id==='afk'?'我的职责':'创作方向'}</dt><dd>${p.role}</dd>${award}<dt>${p.id==='hellycat'?'运行平台':'项目素材'}</dt><dd>${p.mediaSummary||(p.id==='hellycat'?'电脑浏览器 / 安卓手机':p.media.some(m=>m[0]==='video')?'视频 / 图片 / 过程记录':'界面图片 / 过程记录')}</dd></dl></section><div class="detail-canvas"><div class="detail-inner">${projectMedia(p.media[0])}${story}</div></div>`;
+ const intro=p.id==='huashan'?`<section class="detail-intro detail-inner media-only-intro"><div><span class="eyebrow">${p.date}</span><h2 id="detail-title">${p.title}</h2></div></section>`:`<section class="detail-intro detail-inner"><div><span class="eyebrow">${p.date}</span><h2 id="detail-title">${p.title}</h2><p>${p.description}</p>${p.disclosure?`<p class="confidentiality-note"><strong>${p.disclosure}</strong></p>`:''}<div class="detail-actions">${playLink}${downloadLink}</div></div><dl class="detail-meta"><dt>${p.category==='ai'||p.id==='afk'?'我的职责':'创作方向'}</dt><dd>${p.role}</dd>${award}<dt>${p.id==='hellycat'?'运行平台':'项目素材'}</dt><dd>${p.mediaSummary||(p.id==='hellycat'?'电脑浏览器 / 安卓手机':p.media.some(m=>m[0]==='video')?'视频 / 图片 / 过程记录':'界面图片 / 过程记录')}</dd></dl></section>`;
+ body.innerHTML=intro+`<div class="detail-canvas${p.id==='huashan'?' huashan-media':''}"><div class="detail-inner">${projectMedia(p.media[0])}${story}</div></div>`;
+ if(p.id==='huashan')body.querySelector('.demo-media figcaption').remove();
+ body.querySelectorAll('[data-lightbox-image]').forEach(link=>link.addEventListener('click',e=>{e.preventDefault();openMediaLightbox(link);}));
  const caseMedia=body.querySelector('.case-media');if(caseMedia)caseMedia.innerHTML=projectMedia(p.media[1]);
  body.querySelectorAll('.video-stage').forEach(stage=>{
   const video=stage.querySelector('video');
@@ -187,6 +217,7 @@ async function openProject(card,p){
 }
 async function closeProject(){
  if(!detail.open||detail.dataset.state==='closing')return;
+ closeMediaLightbox();
  detail.querySelectorAll('video').forEach(video=>video.pause());
  detail.dataset.state='closing';surfaceAnimation?.cancel();contentAnimation?.cancel();
  if(!reducedMotion.matches&&sourceCard?.isConnected){
@@ -198,8 +229,9 @@ async function closeProject(){
 }
 detail.querySelector('.close').addEventListener('click',closeProject);
 detail.querySelector('.return-projects').addEventListener('click',closeProject);
-detail.addEventListener('cancel',e=>{e.preventDefault();closeProject();});
+detail.addEventListener('cancel',e=>{if(e.target===detail){e.preventDefault();closeProject();}});
 detail.addEventListener('close',()=>{
+ closeMediaLightbox();
  detailCarousels.forEach(carousel=>carousel.destroy());detailCarousels=[];
  mvpPosterObserver?.disconnect();mvpPosterObserver=null;
  detail.querySelectorAll('video').forEach(video=>video.pause());

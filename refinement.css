@@ -24,6 +24,20 @@ html{scrollbar-gutter:stable}body.project-open{overflow:hidden}
 .demo-media{display:grid;justify-items:center;gap:18px;padding:28px;background:#202220;color:#fff;border-radius:0 48px 0 0}.demo-media figcaption{padding:0}
 .landscape-media video{width:100%;aspect-ratio:16/9;border-radius:0}
 .project-slides{display:grid;gap:40px;margin-top:48px}.project-slide{margin:0;min-width:0;scroll-margin-top:108px}.project-slide>a{display:block;background:#fff}.project-slide img{display:block;width:100%;height:auto;aspect-ratio:2425/1364;object-fit:contain;border-radius:0}
+.detail-intro.media-only-intro{grid-template-columns:minmax(0,1fr);padding-block:36px}.media-only-intro #detail-title{margin-bottom:0}
+.huashan-media .demo-media{gap:0}
+.project-album{display:flex;gap:16px;overflow-x:auto;overscroll-behavior-x:contain;margin-top:32px;padding:20px;border:2px solid var(--ink);border-radius:0 48px 0 0;background:#111;scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:#8a8a83 #111}
+.project-album>a{display:block;flex:0 0 auto;height:200px;overflow:hidden;scroll-snap-align:start;transition:opacity .3s,transform .3s}
+.project-album img{display:block;width:auto;max-width:320px;height:100%;object-fit:contain}
+@media(hover:hover){.project-album>a:hover{opacity:.8;transform:translateY(-3px)}}
+.media-lightbox{position:fixed;inset:0;width:100%;height:100%;height:100dvh;max-width:none;max-height:none;margin:0;padding:72px 24px 24px;border:0;background:rgb(10 10 10 / .97);color:#fff;overflow:hidden}
+.media-lightbox[open]{display:grid;grid-template-columns:48px minmax(0,1fr) 48px;gap:16px;align-items:center}
+.media-lightbox::backdrop{background:rgb(0 0 0 / .7)}
+.lightbox-stage{display:grid;grid-template-rows:minmax(0,1fr);place-items:center;min-width:0;min-height:0;width:100%;height:100%}.lightbox-stage img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+.media-lightbox button{display:grid;place-items:center;width:48px;height:48px;padding:0;border:1px solid #777;border-radius:0 16px 0 0;background:#181818;color:#fff;cursor:pointer;transition:background .2s,border-color .2s}
+.media-lightbox button:hover{background:#3155f5;border-color:#fff}.media-lightbox button svg{width:24px;height:24px}
+.media-lightbox .lightbox-close{position:absolute;top:16px;right:24px}
+@media(max-width:720px){.project-album{gap:12px;margin-top:24px;padding:14px;border-top-right-radius:32px}.project-album>a{height:160px}.project-album img{max-width:260px}.media-lightbox{padding:76px 12px 72px}.media-lightbox[open]{grid-template-columns:minmax(0,1fr);gap:0}.media-lightbox .lightbox-close{right:12px}.media-lightbox .lightbox-prev,.media-lightbox .lightbox-next{position:absolute;bottom:12px}.media-lightbox .lightbox-prev{left:12px}.media-lightbox .lightbox-next{right:12px}}
 #afk-intelligence>.project-slides,#tumate-introduction>.project-slides{grid-column:1 / -1;margin-top:0}
 body.custom-cursor .project-media video{cursor:auto!important}.project-media img{display:block;width:100%;height:auto;aspect-ratio:2560/1348;object-fit:contain;background:#a7d7ea;border:1px solid var(--ink);border-radius:0 40px 0 0}.external-media img{aspect-ratio:auto;background:#111}
 .project-media figcaption{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding-block:14px;font-size:var(--text-small);line-height:1.8}.project-media figcaption a{display:inline-flex;align-items:center;gap:6px}.project-media figcaption svg{width:18px;height:18px}.project-media figcaption a:hover{text-decoration:underline;text-underline-offset:4px}

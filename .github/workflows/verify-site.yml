@@ -14,8 +14,14 @@ jobs:
           curl --retry 3 --fail --silent --show-error "$SITE_URL/" -o /tmp/portfolio.html
           grep -q 'AI 互动产品与体验设计' /tmp/portfolio.html
           grep -q '媒介是人的延申。' /tmp/portfolio.html
-          grep -q 'refinement.js?v=20261112-5' /tmp/portfolio.html
-          grep -q 'refinement.css?v=20261112-5' /tmp/portfolio.html
+          grep -q 'refinement.js?v=20261114-1' /tmp/portfolio.html
+          grep -q 'refinement.css?v=20261114-1' /tmp/portfolio.html
+          grep -q 'id="huashan-case"' /tmp/portfolio.html
+          grep -q 'data-lightbox-gallery' /tmp/portfolio.html
+          for asset in huashan-poster.webp huashan-photo-1.webp huashan-photo-2.webp huashan-photo-3.webp huashan-photo-4.webp huashan-intro-18.webp huashan-intro-19.webp huashan-intro-20.webp huashan-intro-21.webp; do
+            grep -Fq "assets/$asset" /tmp/portfolio.html
+            curl --retry 3 --fail --silent --show-error "$SITE_URL/assets/$asset" -o /dev/null
+          done
           grep -q 'id="tumate-introduction-title">项目介绍' /tmp/portfolio.html
           for number in 11 12 13 14 15 16 17; do
             grep -Fq "assets/tumate-intro-$number.webp" /tmp/portfolio.html
@@ -27,6 +33,12 @@ jobs:
           grep -q 'id="aigc-carousel"' /tmp/portfolio.html
           grep -q 'id="aigc-carousel" data-autoplay-direction="right"' /tmp/portfolio.html
           curl --retry 3 --fail --silent --show-error "$SITE_URL/refinement.js" -o /tmp/portfolio.js
+          grep -Fq 'assets/huashan-demo.mp4' /tmp/portfolio.js
+          grep -Fq 'openMediaLightbox' /tmp/portfolio.js
+          for asset in huashan-demo.mp4 huashan-poster.pdf; do
+            status=$(curl --retry 3 --silent --show-error --range 0-1023 --output /dev/null --write-out '%{http_code}' "$SITE_URL/assets/$asset")
+            case "$status" in 200|206) ;; *) exit 1 ;; esac
+          done
           grep -Fq 'autoPixelsPerSecond=detailView?120:72' /tmp/portfolio.js
           grep -Fq "'assets/cat-talk-poster-desktop.jpg','landscape',true" /tmp/portfolio.js
           for project in integrity-film nuo-dance tumate; do grep -q "id:'$project'" /tmp/portfolio.js; done
