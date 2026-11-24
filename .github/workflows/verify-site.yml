@@ -14,7 +14,13 @@ jobs:
           curl --retry 3 --fail --silent --show-error "$SITE_URL/" -o /tmp/portfolio.html
           grep -q 'AI 互动产品与体验设计' /tmp/portfolio.html
           grep -q '媒介是人的延申。' /tmp/portfolio.html
-          grep -q 'refinement.js?v=20261124-2' /tmp/portfolio.html
+          grep -q 'refinement.js?v=20261125-1' /tmp/portfolio.html
+          grep -q 'portfolio-play.js?v=2' /tmp/portfolio.html
+          grep -q 'aria-current="page">新版' /tmp/portfolio.html
+          curl --retry 3 --fail --silent --show-error "$SITE_URL/old-version.html" -o /tmp/portfolio-old.html
+          grep -q 'aria-current="page">旧版' /tmp/portfolio-old.html
+          grep -q 'legacy/refinement.js' /tmp/portfolio-old.html
+          if grep -q 'portfolio-play.js' /tmp/portfolio-old.html; then exit 1; fi
           grep -q 'refinement.css?v=20261124-2' /tmp/portfolio.html
           grep -q 'id="her-case"' /tmp/portfolio.html
           for asset in her-home.webp her-mindmap.webp her-node.webp her-node-5.webp her-metaphors.webp her-letter.webp; do

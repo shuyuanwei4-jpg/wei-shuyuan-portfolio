@@ -1,12 +1,14 @@
 # 韦舒媛 · AI 互动产品与体验设计作品集
 
-公开网站：https://shuyuanwei4-jpg.github.io/wei-shuyuan-portfolio/
+- [新版作品集](https://shuyuanwei4-jpg.github.io/wei-shuyuan-portfolio/) · 插画、移动网格与点击星星动效。
+- [旧版作品集](https://shuyuanwei4-jpg.github.io/wei-shuyuan-portfolio/old-version.html) · 改版前的版式。
 
-完整的静态网站源码与媒体文件，无需安装依赖。双击 `index.html` 可以本地浏览；将整个文件夹发送给别人，对方也可以解压后打开。
+完整的静态网站源码与媒体文件，无需安装依赖。双击 `index.html` 或 `old-version.html` 可以本地浏览对应版本；将整个文件夹发送给别人，对方也可以解压后打开。
 
 ## 文件
 
-- `index.html`：页面结构与项目详情正文。
+- `index.html`：新版首页与项目详情正文。
+- `old-version.html`：旧版入口，使用 `legacy/` 内的样式与脚本。
 - `refinement.js`：项目资料、卡片、轮播、详情展开及视频交互。
 - `refinement.css`：字体、布局、悬停效果及手机适配。
 - `film-frame.css`：负责「交互与叙事」和项目现场照片轮播的电影胶片外框。

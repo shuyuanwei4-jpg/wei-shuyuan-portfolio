@@ -1,4 +1,3 @@
-document.title='韦舒媛｜AI 互动产品与体验设计';
 document.querySelector('.mark').textContent='韦舒媛 / AI 互动产品';
 document.querySelector('.hero-copy').innerHTML='<strong>AI 互动产品 / 产品体验设计</strong><p>我喜欢从需求拆解到 Agent 与交互链路，再到高保真原型全链路开发与设计。擅长用 AI 把创意做成可体验的产品，用实验与数据持续优化。</p>';
 const projects=[

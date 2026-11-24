@@ -61,6 +61,45 @@
   board.addEventListener('pointerleave', resetBoard);
   prefersReducedMotion.addEventListener('change', resetBoard);
 
+  const starPaths = [
+    { x: -25, y: -35, size: 18, color: '--lime', spin: -52 },
+    { x: 6, y: -47, size: 25, color: '--pink', spin: 30 },
+    { x: 33, y: -24, size: 20, color: '--blue', spin: 64 },
+    { x: 36, y: 8, size: 13, color: '--lime', spin: 46 },
+    { x: -3, y: 21, size: 15, color: '--pink', spin: -28 },
+    { x: -35, y: 6, size: 16, color: '--blue', spin: -58 },
+  ];
+
+  document.addEventListener('click', (event) => {
+    if (prefersReducedMotion.matches || event.detail === 0 || event.button !== 0) return;
+    const { clientX, clientY } = event;
+
+    // Let a project or lightbox open before choosing where the burst is drawn.
+    requestAnimationFrame(() => {
+      if (prefersReducedMotion.matches) return;
+      const layer = [...document.querySelectorAll('dialog[open]')].at(-1) || document.body;
+      const burst = document.createElement('div');
+      burst.className = 'click-burst';
+      burst.setAttribute('aria-hidden', 'true');
+      burst.style.left = clientX + 'px';
+      burst.style.top = clientY + 'px';
+
+      for (const { x, y, size, color, spin } of starPaths) {
+        const spark = document.createElement('span');
+        spark.className = 'click-spark';
+        spark.style.setProperty('--spark-x', x + 'px');
+        spark.style.setProperty('--spark-y', y + 'px');
+        spark.style.setProperty('--spark-size', size + 'px');
+        spark.style.setProperty('--spark-color', 'var(' + color + ')');
+        spark.style.setProperty('--spark-spin', spin + 'deg');
+        burst.append(spark);
+      }
+
+      layer.append(burst);
+      setTimeout(() => burst.remove(), 760);
+    });
+  }, { capture: true, passive: true });
+
   if ('IntersectionObserver' in window) {
     const stickerObserver = new IntersectionObserver((entries) => {
       for (const entry of entries) {

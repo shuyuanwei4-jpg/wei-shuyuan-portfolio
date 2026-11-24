@@ -5,11 +5,59 @@
 }
 
 body {
+  --play-grid-size: 108px;
+  isolation: isolate;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: calc(-1 * var(--play-grid-size)) 0 0 calc(-1 * var(--play-grid-size));
+  z-index: -1;
+  pointer-events: none;
   background-image:
     linear-gradient(to right, var(--play-grid) 1px, transparent 1px),
     linear-gradient(to bottom, var(--play-grid) 1px, transparent 1px);
   background-position: center top;
-  background-size: 108px 108px;
+  background-size: var(--play-grid-size) var(--play-grid-size);
+  animation: grid-drift 15s linear infinite;
+}
+
+@keyframes grid-drift {
+  to { transform: translate3d(var(--play-grid-size), var(--play-grid-size), 0); }
+}
+
+.click-burst {
+  position: fixed;
+  z-index: 90;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.click-spark {
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: var(--spark-size);
+  height: var(--spark-size);
+  filter: drop-shadow(1px 1px 0 var(--ink)) drop-shadow(-1px -1px 0 var(--ink));
+  animation: click-star-pop .66s cubic-bezier(.15, .7, .28, 1) both;
+}
+
+.click-spark::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--spark-color);
+  clip-path: polygon(50% 0, 63% 34%, 100% 38%, 72% 62%, 81% 100%, 50% 79%, 19% 100%, 28% 62%, 0 38%, 37% 34%);
+}
+
+@keyframes click-star-pop {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(.25) rotate(-24deg); }
+  19% { opacity: 1; transform: translate(calc(-50% + var(--spark-x) * .42), calc(-50% + var(--spark-y) * .42)) scale(1.14); }
+  65% { opacity: 1; }
+  100% { opacity: 0; transform: translate(calc(-50% + var(--spark-x)), calc(-50% + var(--spark-y))) scale(.45) rotate(var(--spark-spin)); }
 }
 
 .top {
@@ -528,6 +576,11 @@ body > footer {
     linear-gradient(to bottom, var(--play-grid) 1px, transparent 1px);
   background-size: 88px 88px;
   background-position: center top;
+  animation: detail-grid-drift 13s linear infinite;
+}
+
+@keyframes detail-grid-drift {
+  to { background-position: calc(50% + 88px) 88px; }
 }
 
 .detail-intro > div, .detail-intro .detail-meta {
@@ -557,7 +610,7 @@ body > footer {
 }
 
 @media (max-width: 720px) {
-  body { background-size: 62px 62px; }
+  body { --play-grid-size: 62px; }
   .top { gap: 6px; padding: 12px 12px 10px; }
   .top .mark { padding: 7px 8px; }
   .top .nav a { min-height: 29px; padding-inline: 8px; }
@@ -590,6 +643,8 @@ body > footer {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  body::before, .detail-intro { animation: none; }
+  .click-burst { display: none; }
   .hero *, #work:target .section-head h2, .section .project-sticker.sticker-arrived,
   .section .project-sticker, .footer-top {
     animation: none;
