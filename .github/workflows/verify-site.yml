@@ -14,8 +14,13 @@ jobs:
           curl --retry 3 --fail --silent --show-error "$SITE_URL/" -o /tmp/portfolio.html
           grep -q 'AI 互动产品与体验设计' /tmp/portfolio.html
           grep -q '媒介是人的延申。' /tmp/portfolio.html
-          grep -q 'refinement.js?v=20261114-1' /tmp/portfolio.html
-          grep -q 'refinement.css?v=20261114-1' /tmp/portfolio.html
+          grep -q 'refinement.js?v=20261124-1' /tmp/portfolio.html
+          grep -q 'refinement.css?v=20261124-1' /tmp/portfolio.html
+          grep -q 'id="her-case"' /tmp/portfolio.html
+          for asset in her-home.webp her-mindmap.webp her-node.webp her-node-5.webp her-metaphors.webp her-letter.webp; do
+            grep -Fq "assets/$asset" /tmp/portfolio.html
+            curl --retry 3 --fail --silent --show-error "$SITE_URL/assets/$asset" -o /dev/null
+          done
           grep -q 'id="huashan-case"' /tmp/portfolio.html
           grep -q 'data-lightbox-gallery' /tmp/portfolio.html
           for asset in huashan-poster.webp huashan-photo-1.webp huashan-photo-2.webp huashan-photo-3.webp huashan-photo-4.webp huashan-intro-18.webp huashan-intro-19.webp huashan-intro-20.webp huashan-intro-21.webp; do
@@ -35,7 +40,8 @@ jobs:
           curl --retry 3 --fail --silent --show-error "$SITE_URL/refinement.js" -o /tmp/portfolio.js
           grep -Fq 'assets/huashan-demo.mp4' /tmp/portfolio.js
           grep -Fq 'openMediaLightbox' /tmp/portfolio.js
-          for asset in huashan-demo.mp4 huashan-poster.pdf; do
+          grep -Fq 'assets/her-demo.mp4' /tmp/portfolio.js
+          for asset in huashan-demo.mp4 huashan-poster.pdf her-demo.mp4; do
             status=$(curl --retry 3 --silent --show-error --range 0-1023 --output /dev/null --write-out '%{http_code}' "$SITE_URL/assets/$asset")
             case "$status" in 200|206) ;; *) exit 1 ;; esac
           done

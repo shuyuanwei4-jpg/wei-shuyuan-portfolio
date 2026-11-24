@@ -13,7 +13,14 @@ const projects=[
  {id:'huashan',category:'practice',title:'花山之响',description:'交互艺术装置作品。获第 20 届中国好创意数智声景专项赛全国总决赛数字交互空间类国家二等奖。',role:'交互装置 · 数智声景',date:'2026.08 · 国家二等奖',color:'#3155f5',ink:'#fff',media:[['video','花山之响 · 装置交互演示','assets/huashan-demo.mp4',null,'assets/huashan-photo-1.webp','landscape',true]]},
  {id:'ancient-type',category:'practice',title:'古世界语的呢喃',description:'实验性字体设计项目。以视频与图片呈现字形实验、动态表达与设计过程。',role:'实验字体设计 · 动态视觉',date:'字体与视觉实验·中国好创意国家级二等奖',award:'中国好创意国家级二等奖',color:'#ff6b35',ink:'#111',media:[['video','字体动态实验'],['image','字形设计'],['image','字体应用与视觉实验']]},
  {id:'digital-equity',category:'practice',title:'裂隙之外：数字公平滑动叙事',description:'以数字公平为主题的 HTML5 交互作品。获 2026 年第 20 届中国好创意省级一等奖。',role:'HTML5 · 交互叙事',date:'2026.08 · 中国好创意省级一等奖',color:'#b9f227',ink:'#111',media:[['video','滑动叙事演示'],['image','交互页面'],['image','叙事结构与体验流程']]},
- {id:'her',category:'practice',title:'Her · 电影网页设计',description:'为喜欢的人工智能叙事电影《Her》创作的网页介绍设计。',role:'电影专题 · 网页设计',date:'个人网页设计项目',color:'#edb5d1',ink:'#111',media:[['image','网页首屏设计'],['image','电影叙事章节'],['image','网页界面与细节']]},
+ {
+  id:'her',category:'practice',title:'Her · 电影网页设计',
+  description:'我用 Figma 把《Her》中西奥多与人工智能萨曼莎的故事做成可探索的电影专题网页。读者从萨曼莎的问候进入，可以顺着剧情节点回看片段，也可以从人物和电影意象切入，理解这段关系的变化。',
+  cardDescription:'用 Figma 将《Her》的电影叙事转化为网页体验，从人物语音、剧情节点和电影意象切入，探索人机亲密关系。',
+  role:'信息架构 · 叙事交互 · Figma 界面设计',date:'《版式与数字出版物》课程项目',
+  mediaSummary:'网页录屏 / 思维导图 / 界面截图',color:'#edb5d1',ink:'#111',
+  media:[['video','《Her》电影专题网页录屏','assets/her-demo.mp4',null,'assets/her-home.webp','landscape',true]]
+ },
  {id:'cave',category:'practice',title:'CAVE',description:'手绘实验动画作品。获中国好创意省级一等奖。',role:'手绘实验动画',date:'中国好创意省级一等奖',color:'#111',ink:'#fff',media:[['video','动画正片'],['image','手绘分镜'],['image','逐帧画稿与制作过程']]},
  {id:'silent-release',category:'ai',title:'无声的发泄',description:'围绕“隐形崩溃”展开的 AI 数字交互游戏。通过计算机视觉捕捉面部动作，将愤怒、喜悦与悲伤转化为文字弹幕、护盾与能量反馈，让难以言说的压力获得可见、可互动的出口。',cardDescription:'将面部表情转化为弹幕、护盾与能量，让难以言说的压力获得出口。',cover:'assets/silent-venting-cover.jpg',coverAlt:'无声的发泄：微笑触发向日葵与文字粒子的游戏画面',coverBackground:'#f4dc87',role:'概念策划 · 交互设计 · AI 协作开发',date:'AI 交互游戏 · 计算机视觉',color:'#edb5d1',ink:'#111',media:[['video','无声的发泄 · 游戏交互演示','assets/silent-venting-demo.mp4',null,'assets/silent-venting-cover.jpg','landscape',true]]},
  {id:'wow-balloon',category:'practice',title:'哇！气球',description:'一件由我与八岁妹妹共同创作的声控交互装置游戏。从“想在家大喊，却被告知不礼貌”的生活片段出发，将声音转化为气球的膨胀、色彩与飞行，让情绪在安全的游戏空间里得到表达。',cardDescription:'与八岁妹妹共同创作，用声音推动气球飞向太空，探索情绪表达与自我接纳。',cover:'assets/wow-balloon-poster.jpg',coverAlt:'哇！气球作品展板：儿童使用 Arduino 声控装置与气球游戏的现场',coverBackground:'#ffbd2d',role:'共同创作 · 交互设计 · 软硬件实现',date:'声控交互装置 · 儿童情绪表达',color:'#edb5d1',ink:'#111',media:[['video','哇！气球 · 声控交互演示','assets/wow-balloon-demo.mp4',null,'assets/wow-balloon-demo-poster.jpg','landscape',true],['image','哇！气球 · 作品展板','assets/wow-balloon-poster.jpg',null,null,'poster']]}
@@ -105,7 +112,7 @@ let sourceCard=null,sourceFocus=null,surfaceAnimation=null,contentAnimation=null
 let detailCarousels=[];
 let mvpPosterObserver=null;
 const mediaLightbox=document.createElement('dialog');
-mediaLightbox.className='media-lightbox';mediaLightbox.setAttribute('aria-label','花山之响图片大图');
+mediaLightbox.className='media-lightbox';
 mediaLightbox.innerHTML='<button class="lightbox-close" type="button" aria-label="关闭大图" autofocus><i data-lucide="x" aria-hidden="true"></i></button><button class="lightbox-prev" type="button" aria-label="上一张图片"><i data-lucide="chevron-left" aria-hidden="true"></i></button><div class="lightbox-stage"><img alt=""></div><button class="lightbox-next" type="button" aria-label="下一张图片"><i data-lucide="chevron-right" aria-hidden="true"></i></button>';
 detail.append(mediaLightbox);lucide.createIcons({root:mediaLightbox});
 let lightboxLinks=[],lightboxIndex=0,lightboxTrigger=null;
@@ -117,6 +124,7 @@ function showLightboxImage(index){
 function openMediaLightbox(link){
  lightboxLinks=[...link.closest('[data-lightbox-gallery]').querySelectorAll('[data-lightbox-image]')];
  lightboxTrigger=link;showLightboxImage(lightboxLinks.indexOf(link));
+ mediaLightbox.setAttribute('aria-label',`${detail.querySelector('#detail-title').textContent}图片大图`);
  mediaLightbox.showModal();if(cursorActive)liftCursor();
 }
 function closeMediaLightbox(){if(mediaLightbox.open)mediaLightbox.close();}
@@ -157,6 +165,7 @@ function renderDetail(p){
  else if(p.id==='cat-talk')story=document.querySelector('#cat-talk-case').innerHTML;
  else if(p.id==='silent-release')story=document.querySelector('#silent-venting-case').innerHTML;
  else if(p.id==='huashan')story=document.querySelector('#huashan-case').innerHTML;
+ else if(p.id==='her')story=document.querySelector('#her-case').innerHTML;
  else if(p.id==='wow-balloon')story=`<section class="case-section poster-section"><h3>作品展板</h3>${projectMedia(p.media[1])}</section>`+document.querySelector('#wow-balloon-case').innerHTML;
  else if(p.slides)story=document.querySelector('#kinx-mvp-case').innerHTML+`<section class="case-section poster-section" aria-labelledby="kinx-process-title"><h3 id="kinx-process-title">创作过程</h3><div class="project-slides" aria-label="KIN//X 项目介绍">${p.slides.map(([file,label])=>`<figure class="project-slide"><a href="assets/kinx-${file}.jpg" target="_blank" rel="noopener noreferrer" aria-label="查看${label}原图（新窗口打开）"><img src="assets/kinx-${file}.jpg" alt="${label}" width="2425" height="1364" loading="lazy" decoding="async"></a></figure>`).join('')}</div></section>`;
  else if(p.caseSections)story=p.caseSections.map(section=>`<section class="case-section"><h3>${section.title}</h3><div class="case-copy">${section.text?`<p>${section.text}</p>`:''}${section.points?`<ul class="case-points">${section.points.map(point=>`<li>${point}</li>`).join('')}</ul>`:''}</div></section>`).join('');
