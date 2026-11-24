@@ -15,6 +15,7 @@ const projects=[
  {id:'digital-equity',category:'practice',title:'裂隙之外：数字公平滑动叙事',description:'以数字公平为主题的 HTML5 交互作品。获 2026 年第 20 届中国好创意省级一等奖。',role:'HTML5 · 交互叙事',date:'2026.08 · 中国好创意省级一等奖',color:'#b9f227',ink:'#111',media:[['video','滑动叙事演示'],['image','交互页面'],['image','叙事结构与体验流程']]},
  {
   id:'her',category:'practice',title:'Her · 电影网页设计',
+ hoverCover:'assets/her-node.webp',hoverCoverAlt:'《Her》关键节点：首次争吵',
   description:'我用 Figma 把《Her》中西奥多与人工智能萨曼莎的故事做成可探索的电影专题网页。读者从萨曼莎的问候进入，可以顺着剧情节点回看片段，也可以从人物和电影意象切入，理解这段关系的变化。',
   cardDescription:'用 Figma 将《Her》的电影叙事转化为网页体验，从人物语音、剧情节点和电影意象切入，探索人机亲密关系。',
   role:'信息架构 · 叙事交互 · Figma 界面设计',date:'《版式与数字出版物》课程项目',
@@ -71,7 +72,7 @@ articles.forEach(article=>{
    cover.classList.add('cover-placeholder');cover.innerHTML='<i data-lucide="image" aria-hidden="true"></i><span>作品预览待补充</span>';
   }
   article.append(cover);
-  if(p.hoverCoverMobile){
+  if(p.hoverCoverMobile||p.id==='cat-talk'){
    const clearTouchPreview=()=>article.classList.remove('is-touch-preview');
    article.addEventListener('pointerdown',e=>{if(e.pointerType==='touch')article.classList.add('is-touch-preview');},{passive:true});
    window.addEventListener('pointerup',clearTouchPreview,{passive:true});

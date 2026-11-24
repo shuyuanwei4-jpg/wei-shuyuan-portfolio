@@ -14,8 +14,8 @@ jobs:
           curl --retry 3 --fail --silent --show-error "$SITE_URL/" -o /tmp/portfolio.html
           grep -q 'AI 互动产品与体验设计' /tmp/portfolio.html
           grep -q '媒介是人的延申。' /tmp/portfolio.html
-          grep -q 'refinement.js?v=20261124-1' /tmp/portfolio.html
-          grep -q 'refinement.css?v=20261124-1' /tmp/portfolio.html
+          grep -q 'refinement.js?v=20261124-2' /tmp/portfolio.html
+          grep -q 'refinement.css?v=20261124-2' /tmp/portfolio.html
           grep -q 'id="her-case"' /tmp/portfolio.html
           for asset in her-home.webp her-mindmap.webp her-node.webp her-node-5.webp her-metaphors.webp her-letter.webp; do
             grep -Fq "assets/$asset" /tmp/portfolio.html
